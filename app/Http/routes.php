@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//微信验证
+Route::any('/wechat','WxController@server');
