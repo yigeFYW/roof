@@ -11,7 +11,8 @@ use App\Http\Controllers\Controller;
 class WxController extends Controller
 {
     //微信验证
-    public function server(){
+    public function server($uid){
+        
         $options = [
                 /**
                  * Debug 模式，bool 值：true/false

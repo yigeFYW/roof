@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 
 //微信验证
-Route::any('/wechat','WxController@server');
+Route::any('/wechat/{$uid}','WxController@server');
