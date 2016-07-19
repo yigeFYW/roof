@@ -41,9 +41,9 @@ class WxController extends Controller
         $app = new Application($options);
 
 
-        //$wechat = app('wechat');
+        $wechat = app('wechat');
         //$wechat->server->appId = 'sss';
-        dd($app->server);
+        //dd($app->server);
         $wechat->server->setMessageHandler(function($message){
             return "欢迎关注 laravel！";
         });
