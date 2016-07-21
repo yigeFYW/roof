@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
-
+    protected $username = "name";
     /**
      * Get a validator for an incoming registration request.
      *
@@ -43,7 +43,6 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|max:255',
-            'mobile' => 'required',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
@@ -60,7 +59,6 @@ class AuthController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'mobile' => $data['mobile'],
             'regtime' => time(),
             'password' => bcrypt($data['password']),
         ]);

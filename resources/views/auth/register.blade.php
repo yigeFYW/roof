@@ -29,7 +29,6 @@
                 {!! csrf_field() !!}
                 <input type="text" name="name" class="username" placeholder="用户名" required>
                 <input type="email" name="email" class="email" placeholder="邮箱" required>
-                <input type="text" name="mobile" class="mobile" placeholder="手机号" required>
                 <input type="password" name="password" class="password" placeholder="密码" required>
                 <input type="password" name="password_confirmation" class="passwordtwo" placeholder="确认密码" required>
                 <button type="submit">提交</button>

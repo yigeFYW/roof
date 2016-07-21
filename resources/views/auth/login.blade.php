@@ -25,9 +25,9 @@
 
         <div class="page-container">
             <h1>微信平台登录</h1>
-            <form action="{{url('auth/register')}}" method="post">
+            <form action="{{url('auth/login')}}" method="post">
                 {!! csrf_field() !!}
-                <input type="text" name="name" class="username" placeholder="请输入用户名或邮箱" required>
+                <input type="text" name="name" class="username" placeholder="请输入用户名" required>
                 <input type="password" name="password" class="password" placeholder="密码" required>
                 <button type="submit">提交</button>
                 <div class="error"><span>+</span></div>

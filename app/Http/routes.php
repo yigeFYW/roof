@@ -10,11 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+//首页路由
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 //微信验证
 Route::any('/wechat','WxController@server');
@@ -27,8 +26,11 @@ Route::get('auth/login','Auth\AuthController@getLogin');
 Route::post('auth/login','Auth\AuthController@postLogin');
 //登出路由
 Route::get('auth/logout','Auth\AuthController@getLogout');
+//登陆成功欢迎页面
+Route::get('home','Custromer\CusController@index');
 
-Route::get('/home',function(){
-    return '注册成功!';
-});
 
+//欢迎界面路由
+Route::get('/cus/start','Custromer\CusController@start');
+//配置公众账号路由
+Route::get('/cus/enable','Custromer\CusController@enable');
