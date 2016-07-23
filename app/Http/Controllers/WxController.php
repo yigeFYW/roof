@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\AccountModel;
 class WxController extends Controller
 {
     //微信验证
     public function server($uid){
-        
+        //从数据库查出对应的微信配置
+        $pz = AccountModel::where('uid',$uid)->first(['acc_appid','acc_secret','acc_aeskey','acc_token']);
         $options = [
                 /**
                  * Debug 模式，bool 值：true/false
@@ -23,10 +24,10 @@ class WxController extends Controller
                 /**
                  * 账号基本信息，请从微信公众平台/开放平台获取
                  */
-                'app_id'  => 'wx32cffe105b765454',         // AppID
-                'secret'  => 'd4624c36b6795d1d99dcf0547af5443d',     // AppSecret
-                'token'   => 'huanghedyx',          // Token
-                'aes_key' => '',                    // EncodingAESKey，安全模式下请一定要填写！！！
+                'app_id'  => $pz['acc_appid'],   // AppID
+                'secret'  => $pz['acc_secret'],  // AppSecret
+                'token'   => $pz['acc_token'],   // Token
+                'aes_key' => $pz['acc_aeskey'],  // EncodingAESKey，安全模式下请一定要填写！！！
                 /**
                  * 日志配置
                  *

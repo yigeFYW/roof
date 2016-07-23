@@ -79,7 +79,7 @@
            	</ul>
           	<ul class="nav navbar-nav navbar-right">
             	<li class="dropdown">
-              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎:huanghedyx <b class="caret"></b></a>
+              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: {{$user->name}} <b class="caret"></b></a>
 	              	<ul class="dropdown-menu">
 	                	<li><a href="#">返回首页</a></li>
 	                	<li><a href="#">账号设置</a></li>
@@ -109,8 +109,8 @@
 						<label for="inputEmail3" class="col-sm-2 control-label">公众号名称(必填) :</label>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="wechat_name" placeholder="公众号名称（例：宁夏E营销）">
-							<span class="text-danger"></span>
 						</div>
+						<span class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">公众号类型 :</label>
@@ -135,24 +135,28 @@
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="inputPassword3" name="wechat_num" placeholder="您的微信账号（例：huanghe6233）">
 						</div>
+						<span class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">公众号AppId(必填) :</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="inputPassword3" name="appid" placeholder="您的开发者ID">
+							<input type="text" class="form-control" id="inputPassword3" name="appid" placeholder="您的开发者AppID">
 						</div>
+						<span class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">公众号AppSecret(必填) :</label>
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="inputPassword3" name="appsecret" placeholder="您的应用密钥">
 						</div>
+						<span class="text-danger"></span>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-2 control-label">公众号EncodingAESKey(必填) :</label>
+						<label for="inputPassword3" class="col-sm-2 control-label">公众号EncodingAESKey :</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="inputPassword3" name="aeskey" placeholder="消息加解密密钥">
+							<input type="text" class="form-control" id="inputPassword3" name="aeskey" placeholder="消息加解密密钥(如果选择明文模式则可以不填)">
 						</div>
+						<span class="text-danger"></span>
 					</div>
 					<div class="col-sm-2"></div>
 					<div class="col-sm-5">
@@ -165,7 +169,7 @@
 </div>
 
 <footer>
-	<p>copyright © 一个放羊娃 2016-2017 <a href="http://hhsblog.cn">http://hhsblog.cn</a></p>
+	<p>copyright © <a href="http://hhsblog.cn">一个放羊娃 技术支持</a> 2016-2017 </p>
 </footer>
 </body>
 </html>

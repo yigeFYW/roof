@@ -79,7 +79,7 @@
            	</ul>
           	<ul class="nav navbar-nav navbar-right">
             	<li class="dropdown">
-              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎:huanghedyx <b class="caret"></b></a>
+              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: {{$user->name}} <b class="caret"></b></a>
 	              	<ul class="dropdown-menu">
 	                	<li><a href="#">返回首页</a></li>
 	                	<li><a href="#">账号设置</a></li>
@@ -95,10 +95,10 @@
 <div class="title">
 	欢迎使用微信托管平台
 	<br>
-	<p>您还没有配置您的公众账号，<a href="">点我进入配置界面</a></p>
+	<p>您还没有配置您的公众账号，<a href="{{url('cus/enable')}}">点我进入配置界面</a></p>
 </div>
 <footer>
-	<p>copyright © 一个放羊娃 2016-2017 <a href="http://hhsblog.cn">http://hhsblog.cn</a></p>
+	<p>copyright © <a href="http://hhsblog.cn">一个放羊娃 技术支持</a> 2016-2017 </p>
 </footer>
 </body>
 </html>
