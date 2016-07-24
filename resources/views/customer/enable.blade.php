@@ -104,11 +104,12 @@
 					<strong>注意！</strong>
 					请登录微信公众平台 <a href="http://mp.weixin.qq.com" target="_blank">http://mp.weixin.qq.com</a> ，按照以下说明如实填写您的公众号信息,如果填错,可能会影响您的正常使用！
 				</div>
-				<form class="form-horizontal">
+				<form class="form-horizontal" action="" method="post">
+					{!! csrf_field() !!}
 					<div class="form-group">
 						<label for="inputEmail3" class="col-sm-2 control-label">公众号名称(必填) :</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="wechat_name" placeholder="公众号名称（例：宁夏E营销）">
+							<input type="text" class="form-control" name="wechat_name" placeholder="公众号名称（例：宁夏E营销）">
 						</div>
 						<span class="text-danger"></span>
 					</div>

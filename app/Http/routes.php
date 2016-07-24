@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 //微信验证
-Route::any('/wechat/{uid}','WxController@server');
+Route::any('wechat/{uid}.html','WxController@server');
 
 //注册路由
 Route::get('auth/reg','Auth\AuthController@getRegister');
@@ -38,3 +38,10 @@ Route::get('/cus/enable','Custromer\CusController@enable');
 Route::post('/cus/enable','Custromer\CusController@postenable');
 //进入后台路由(配置完成的欢迎界面)
 Route::get('welcome','Custromer\CusController@welcome');
+
+
+//测试路由
+Route::get('test','TestController@index');
+
+//测试删除菜单
+Route:get('del/{uid?}','WxController@delmenu');

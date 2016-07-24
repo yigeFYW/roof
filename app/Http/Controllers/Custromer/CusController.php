@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 class CusController extends Controller
 {
+    protected $middleware = ['App\Http\Middleware\Authenticate'=>[]];
+
     //登录成功 根据用户状态 进行路由分发
     public function index(Request $req){
 
@@ -49,8 +51,8 @@ class CusController extends Controller
         $acc->acc_cat = $req->wechat_cat;
         $acc->acc_wechat = $req->wechat_num;
         $acc->acc_appid = $req->appid;
-        $acc->acc_appsecret = $req->secret;
-        $acc->acc_aeskey = $req->appaeskey;
+        $acc->acc_secret = $req->appsecret;
+        $acc->acc_aeskey = $req->aeskey;
         $acc->regtime = time();
         $rs = $acc->save();
         if($rs){
@@ -83,4 +85,6 @@ class CusController extends Controller
         $str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         return substr(str_shuffle($str),0,$length);
     }
+
+    
 }

@@ -24,14 +24,20 @@
     <body>
 
         <div class="page-container">
+            @if(session('info'))
+                {{session('info')}}
+            @endif
             <h1>微信平台登录</h1>
+
             <form action="{{url('auth/login')}}" method="post">
                 {!! csrf_field() !!}
                 <input type="text" name="name" class="username" placeholder="请输入用户名" required>
                 <input type="password" name="password" class="password" placeholder="密码" required>
                 <button type="submit">提交</button>
+
                 <div class="error"><span>+</span></div>
             </form>
+
             <div class="connect">
                 <p>Copyright © 梓成科技 2016-2017</p>
                 <!--<p>
