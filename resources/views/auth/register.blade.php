@@ -18,7 +18,14 @@
         <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-
+        <style>
+            .redt{
+                margin-top: 4px;
+                display:block;
+                color: red;
+                font-size:10px;
+            }
+        </style>
     </head>
 
     <body>
@@ -28,11 +35,14 @@
             <form action="{{url('auth/reg')}}" method="post">
                 {!! csrf_field() !!}
                 <input type="text" name="name" class="username" placeholder="用户名" required>
+                <label class="redt" id="err_name"></label>
                 <input type="email" name="email" class="email" placeholder="邮箱" required>
+                <label class="redt" id="err_email"></label>
                 <input type="password" name="password" class="password" placeholder="密码" required>
+                <label class="redt" id="err_pwd1"></label>
                 <input type="password" name="password_confirmation" class="passwordtwo" placeholder="确认密码" required>
+                <label class="redt" id="err_pwd2"></label>
                 <button type="submit">提交</button>
-                <div class="error"><span>+</span></div>
             </form>
             <div class="connect">
                 <p>Copyright © 梓成科技 2016-2017</p>
@@ -50,7 +60,69 @@
         <script src="/assets/js/scripts.js"></script>
 
     </body>
-
+    <script>
+        var data = {
+            _token: $("input[name='_token']").val(),
+        };
+        $("input[name='name']").change(function(){
+            data.name = $("input[name='name']").val();
+            $.post('{{url('auth/check')}}',data,function(res){
+                if(res.error == 1 ){
+                    $('#err_name').html(res.msg);
+                    $("input[name='name']").css('border','1px solid red');
+                }else if(res.error == 0){
+                    $('#err_name').html('');
+                    $("input[name='name']").css('border','none');
+                }
+            },'json');
+        });
+        $("input[name='email']").change(function(){
+            data.email = $("input[name='email']").val();
+            $.post('{{url('auth/check')}}',data,function(res){
+                if(res.error == 1 ){
+                    $('#err_email').html(res.msg);
+                    $("input[name='email']").css('border','1px solid red');
+                }else if(res.error == 0){
+                    $('#err_email').html('');
+                    $("input[name='email']").css('border','none');
+                }
+            },'json');
+        });
+        $("input[name='password']").change(function(){
+            pwd();
+            var a = $("input[name='password']").val();
+            if(a.length == 0){
+                $('#err_pwd1').html('');
+                $("input[name='password']").css('border','none');
+            }else if(a.length < 6){
+                $('#err_pwd1').html('密码过短，请慎重考虑！');
+                $("input[name='password']").css('border','1px solid red');
+            }else if(a.length >=6){
+                $('#err_pwd1').html('');
+                $("input[name='password']").css('border','none');
+            }
+        });
+        $("input[name='password_confirmation']").change(function(){
+            pwd();
+        });
+        function pwd(){
+            var pwd1 = $("input[name='password']").val();
+            var pwd2 = $("input[name='password_confirmation']").val();
+            if(pwd1 !== pwd2 && pwd2.length != ''){
+                $('#err_pwd2').html('两次密码不一致！');
+                $("input[name='password']").css('border','1px solid red');
+                $("input[name='password_confirmation']").css('border','1px solid red');
+            }else if(pwd2 == ''){
+                $('#err_pwd2').html('');
+                $("input[name='password_confirmation']").css('border','none');
+                $("input[name='password']").css('border','none');
+            }else if(pwd2 == pwd1 && pwd1.length >= 6){
+                $('#err_pwd2').html('');
+                $("input[name='password_confirmation']").css('border','none');
+                $("input[name='password']").css('border','none');
+            }
+        }
+    </script>
 </html>
 
 

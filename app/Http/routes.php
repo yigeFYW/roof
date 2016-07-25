@@ -41,7 +41,7 @@ Route::get('welcome','Custromer\CusController@welcome');
 
 
 //测试路由
-Route::get('test','TestController@index');
+Route::get('test/{id}','TestController@index');
 
 //测试删除菜单
 Route:get('del/{uid?}','WxController@delmenu');
