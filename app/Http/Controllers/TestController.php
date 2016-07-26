@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Nette\Mail\Message;
 use Nette\Mail\SmtpMailer;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\User;
+use Illuminate\Contracts\Encryption\DecryptException;
 class TestController extends Controller
 {
     /**
@@ -34,5 +36,26 @@ class TestController extends Controller
         echo bcrypt($id);
     }
 
+    public function in($id,$str){
+        $user = User::find($id);
+        if($user){
 
+            $str = Crypt::encrypt($str);
+            echo $str;
+            echo '<br>',strlen($str);
+            $str = Crypt::decrypt($str);
+            echo $str;
+            dd($user);
+        }
+    }
+    
+    /**
+     * 
+     * 
+     */
+    public function testmail($id){
+        $id = Crypt::decrypt($id);
+        
+        
+    }
 }

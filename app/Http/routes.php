@@ -38,10 +38,13 @@ Route::get('/cus/enable','Custromer\CusController@enable');
 Route::post('/cus/enable','Custromer\CusController@postenable');
 //进入后台路由(配置完成的欢迎界面)
 Route::get('welcome','Custromer\CusController@welcome');
-
+//验证邮箱路由($id为加密之后的ID)
+Route::get('test/mail/{$id}','TestController!@testmail');
 
 //测试路由
 Route::get('test/{id}','TestController@index');
 
 //测试删除菜单
 Route:get('del/{uid?}','WxController@delmenu');
+//测试密码解密路由
+Route::get('test1/{id}','TestController@in');
