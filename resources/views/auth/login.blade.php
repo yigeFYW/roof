@@ -26,6 +26,7 @@
         <div class="page-container">
             @if(session('info'))
                 {{session('info')}}
+                <br>
             @endif
             <h1>微信平台登录</h1>
 

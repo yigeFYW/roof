@@ -18,15 +18,15 @@ class EmailMiddleware
     {
         $rs = $next($request);
         $mail = new Message;
-        $mail->setFrom('John <john@example.com>')
+        $mail->setFrom( env('SMTP_NAME') .'<'.env('SMTP_USERNAME').'>')
             ->addTo('peter@example.com')
             ->addTo('jack@example.com')
             ->setSubject('Order Confirmation')
             ->setBody("Hello, Your order has been accepted.");
         $mailer = new SmtpMailer([
-            'host' => 'smtp.gmail.com',
-            'username' => 'john@gmail.com',
-            'password' => '*****',
+            'host' => env('SMTP_HOST'),
+            'username' => env('SMTP_USERNAME'),
+            'password' => env('SMTP_PWD'),
             'secure' => 'ssl',
         ]);
         $mailer->send($mail);
