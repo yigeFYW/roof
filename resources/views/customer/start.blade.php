@@ -46,7 +46,7 @@
 		}
 
 		.title {
-			font-size: 96px;
+			font-size: 76px;
 			text-align: center;
 			margin-top: 14%;
 		}
@@ -95,7 +95,11 @@
 <div class="title">
 	欢迎使用微信托管平台
 	<br>
-	<p>您还没有配置您的公众账号，<a href="{{url('cus/enable')}}">点我进入配置界面</a></p>
+	@if($user->status == 0)
+		<p>系统给您的邮箱: {{$user->email}}发送了一封激活邮件,激活后方可使用!</p>
+		@elseif($user->status == 1)
+			<p>您还没有配置您的公众账号，<a href="{{url('cus/enable')}}">点我进入配置界面</a></p>
+		@endif
 </div>
 <footer>
 	<p>copyright © <a href="http://hhsblog.cn">一个放羊娃 技术支持</a> 2016-2017 </p>
