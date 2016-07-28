@@ -32,7 +32,7 @@ class AuthController extends Controller
     {
         $this->middleware('guest', ['except' => 'getLogout']);
     }
-    protected $username = "name";
+    protected $username = "email";
     /**
      * Get a validator for an incoming registration request.
      *
@@ -53,7 +53,7 @@ class AuthController extends Controller
      *
      * @param  array  $data
      * @return User
-     */
+*/
     protected function create(array $data)
     {
         return User::create([

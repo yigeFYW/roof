@@ -32,7 +32,7 @@
 
             <form action="{{url('auth/login')}}" method="post">
                 {!! csrf_field() !!}
-                <input type="text" name="name" class="username" placeholder="请输入用户名" required>
+                <input type="email" name="email" class="username" placeholder="请输入邮箱" required>
                 <input type="password" name="password" class="password" placeholder="密码" required>
                 <button type="submit">提交</button>
 

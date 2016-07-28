@@ -20,7 +20,8 @@ Route::any('wechat/{uid}.html','WxController@server');
 
 //注册路由
 Route::get('auth/reg','Auth\AuthController@getRegister');
-Route::post('auth/reg','Auth\AuthController@postRegister');
+//
+Route::post('auth/reg',['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'Auth\AuthController@postRegister']);
 //登录路由
 Route::get('auth/login','Auth\AuthController@getLogin');
 Route::post('auth/login','Auth\AuthController@postLogin');
@@ -39,12 +40,14 @@ Route::post('/cus/enable','Custromer\CusController@postenable');
 //进入后台路由(配置完成的欢迎界面)
 Route::get('welcome','Custromer\CusController@welcome');
 //验证邮箱路由($id为加密之后的ID)
-Route::get('test/mail/{$id}','TestController!@testmail');
+Route::get('test/mail/{id}','TestController@testmail');
 
 //测试路由
-Route::get('test/{id}','TestController@index');
-
+Route::get('test',['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'TestController@index']);
+//['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'TestController@index']
 //测试删除菜单
 Route:get('del/{uid?}','WxController@delmenu');
 //测试密码解密路由
 Route::get('test1/{id}','TestController@in');
+
+Route::get('test2','TestController@mm');

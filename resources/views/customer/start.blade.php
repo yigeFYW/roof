@@ -98,6 +98,9 @@
 	@if($user->status == 0)
 		<p>系统给您的邮箱: {{$user->email}}发送了一封激活邮件,激活后方可使用!</p>
 		@elseif($user->status == 1)
+			@if(session('succ'))
+				<p>恭喜您邮箱验证成功!</p>
+				@endif
 			<p>您还没有配置您的公众账号，<a href="{{url('cus/enable')}}">点我进入配置界面</a></p>
 		@endif
 </div>

@@ -29,7 +29,7 @@ class CusController extends Controller
             //进入提示发送邮箱验证码
             $data['user'] = $users;
 
-            return view('cus/start',$data);
+            return view('customer/start',$data);
         }else if($status == 1){
             //用户没有配置公众号
             return redirect('cus/start')->with('status',1);
