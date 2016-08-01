@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\AccountModel;
 class WxController extends Controller
 {
+    public $pz = null;
     //微信验证
     public function server($uid){
         //从数据库查出对应的微信配置
-        $pz = AccountModel::where('uid',$uid)->first(['acc_appid','acc_secret','acc_aeskey','acc_token']);
-        //dd($pz);
+        $pz = AccountModel::where('uid',$uid)->first(['aid','acc_appid','acc_secret','acc_aeskey','acc_token']);
+        $this->$pz = $pz;
         $options = [
                 /**
                  * Debug 模式，bool 值：true/false
@@ -41,16 +41,57 @@ class WxController extends Controller
                     'file'  => '/tmp/easywechat.log',
                 ],
         ];
-
         $app = new Application($options);
-        $wechat = app('wechat');
-        $wechat->server->setMessageHandler(function($message){
-            return "欢迎关注 laravel！";
+        $wechat = $app->server;
+        $wechat->setMessageHandler(function ($message) {
+            switch ($message->MsgType) {
+                case 'event':
+                    //关注信息
+                    if($message->MsgType['event'] == 'subscribe'){
+
+                        break;
+                    }else if($message->MsgType['event'] == 'unsubscribe'){
+
+                        break;
+                    }
+                    if($message->MsgType['event'] == '1'){
+
+                        break;
+                    }
+                    break;
+                case 'text':
+                    # 文字消息...
+                    //判断关键字
+
+                    $result = $this->responseText($message);
+                    break;
+                case 'image':
+                    # 图片消息...
+                    break;
+                case 'voice':
+                    # 语音消息...
+                    break;
+                case 'video':
+                    # 视频消息...
+                    break;
+                case 'location':
+                    # 坐标消息...
+                    break;
+                case 'link':
+                    # 链接消息...
+                    break;
+                // ... 其它消息
+                default:
+                    # code...
+                    break;
+            }
+            return $result;
         });
+        return $wechat->serve();
+    }
 
-        $res = $wechat->server->serve();
-
-        return $res;
+    public function responseText($message){
+        return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注,我的朋友!']);
     }
 
     public function delmenu($uid = 1){
@@ -61,7 +102,7 @@ class WxController extends Controller
              *
              * 当值为 false 时，所有的日志都不会记录
              */
-            'debug'  => true,
+            'debug'  => false,
             /**
              * 账号基本信息，请从微信公众平台/开放平台获取
              */
