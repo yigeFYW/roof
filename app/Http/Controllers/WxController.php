@@ -13,7 +13,9 @@ class WxController extends Controller
     //微信验证
     public function server($uid){
         //从数据库查出对应的微信配置
-        $pz = AccountModel::where('uid',$uid)->first(['aid','acc_appid','acc_secret','acc_aeskey','acc_token']);
+        //$pz = AccountModel::where('uid',$uid)->first(['aid','acc_appid','acc_secret','acc_aeskey','acc_token']);
+
+        $pz = AccountModel::find($uid);
         $this->$pz = $pz;
         $options = [
                 /**
@@ -21,7 +23,7 @@ class WxController extends Controller
                  *
                  * 当值为 false 时，所有的日志都不会记录
                  */
-                'debug'  => true,
+                'debug'  => false,
                 /**
                  * 账号基本信息，请从微信公众平台/开放平台获取
                  */
@@ -91,7 +93,7 @@ class WxController extends Controller
     }
 
     public function responseText($message){
-        return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注,我的朋友!']);
+        return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注!']);
     }
 
     public function delmenu($uid = 1){

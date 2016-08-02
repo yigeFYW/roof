@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>登录模板</title>
+        <title>宁夏E营销</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,28 +19,34 @@
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
+        <style>
+            .reg{
+                text-decoration:none;
+                color: #ff9000;
+            }
+        </style>
     </head>
 
     <body>
 
         <div class="page-container">
-            @if(session('info'))
-                {{session('info')}}
-                <br>
-            @endif
+
             <h1>微信平台登录</h1>
 
             <form action="{{url('auth/login')}}" method="post">
                 {!! csrf_field() !!}
                 <input type="email" name="email" class="username" placeholder="请输入邮箱" required>
                 <input type="password" name="password" class="password" placeholder="密码" required>
-                <button type="submit">提交</button>
+                <button type="submit">登录</button>
+                <br>
+                <br>
+                <p>没有账号?<a type="button" href="{{url('auth/reg')}}" class="reg">点击注册</a></p>
 
                 <div class="error"><span>+</span></div>
             </form>
 
             <div class="connect">
-                <p>Copyright © 梓成科技 2016-2017</p>
+                <p>Copyright © 宁夏E营销 2016-2017</p>
                 <!--<p>
                     <a class="facebook" href=""></a>
                     <a class="twitter" href=""></a>
@@ -55,6 +61,15 @@
         <script src="/assets/js/scripts.js"></script>
 
     </body>
+
+    @if(session('info'))
+        <script>
+            var ale = function () {
+                {!! session('info') !!}
+            }
+            setTimeout(ale,800);
+        </script>
+    @endif
 
 </html>
 

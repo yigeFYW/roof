@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>宁夏E营销</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -33,12 +33,18 @@
             .title {
                 font-size: 96px;
             }
+            a{
+                text-decoration: none;
+                color: #ff9000;
+            }
+
+
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">The Best Wechat Shell !<br><a href="{{url('home')}}">login···</a></div>
             </div>
         </div>
     </body>

@@ -82,7 +82,7 @@
               		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: {{$user->name}} <b class="caret"></b></a>
 	              	<ul class="dropdown-menu">
 	                	<li><a href="#">返回首页</a></li>
-	                	<li><a href="#">账号设置</a></li>
+	                	<li><a href="javascript:;">账号设置</a></li>
 	                	<li><a href="#">修改密码</a></li>
 	                	<li class="divider"></li>
 	                	<li><a href="{{url('auth/logout')}}">安全登出</a></li>
@@ -130,6 +130,7 @@
 						<div class="col-sm-5">
 							<input type="text" class="form-control" id="inputPassword3" name="wechat_id" placeholder="公众号原始ID（例：gh_ac97ce30c110）">
 						</div>
+						<span class="text-danger"></span>
 					</div>
 					<div class="form-group">
 						<label for="inputPassword3" class="col-sm-2 control-label">微信号(必填) :</label>
@@ -161,7 +162,7 @@
 					</div>
 					<div class="col-sm-2"></div>
 					<div class="col-sm-5">
-						<button class="btn btn-success" type="submit" style="margin-left:-10px;">提交</button>
+						<button class="btn btn-success" type="button" style="margin-left:-10px;" id="sub">提交</button>
 					</div>
 				</form>
 			</div>
@@ -173,4 +174,35 @@
 	<p>copyright © <a href="http://hhsblog.cn">一个放羊娃 技术支持</a> 2016-2017 </p>
 </footer>
 </body>
+<script>
+	var data = {
+		_token:null,
+		wechat_name:null,
+		wechat_id:null,
+		wechat_cat:null,
+		wechat_num:null,
+		appid:null,
+		appsecret:null,
+		aeskey:null
+	};
+	$('#sub').click(function(){
+		data.wechat_name = $("input[name='wechat_name']").val();
+		data.wechat_id = $("input[name='wechat_id']").val();
+		data.wechat_cat = $("select[name='wechat_cat']").val();
+		data.wechat_num = $("input[name='wechat_num']").val();
+		data.appid = $("input[name='appid']").val();
+		data.appsecret = $("input[name='appsecret']").val();
+		data.aeskey = $("input[name='aeskey']").val();
+		data._token = $("input[name='_token']").val();
+		$.post('{{url('cus/enable')}}',data,function(res){
+			if(res.error > 0){
+				$("input[name='"+res.list+"']").parent().siblings('.text-danger').html(res.msg);
+				var del = function(){$("input[name='"+res.list+"']").parent().siblings('.text-danger').empty();}
+				setTimeout(del,3000);
+			}else if(res.error == 0){
+				window.location = res.msg;
+			}
+		});
+	});
+</script>
 </html>

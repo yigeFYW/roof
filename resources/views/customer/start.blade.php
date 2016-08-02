@@ -82,7 +82,6 @@
               		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: {{$user->name}} <b class="caret"></b></a>
 	              	<ul class="dropdown-menu">
 	                	<li><a href="#">返回首页</a></li>
-	                	<li><a href="#">账号设置</a></li>
 	                	<li><a href="#">修改密码</a></li>
 	                	<li class="divider"></li>
 	                	<li><a href="{{url('auth/logout')}}">安全登出</a></li>
@@ -96,7 +95,7 @@
 	欢迎使用微信托管平台
 	<br>
 	@if($user->status == 0)
-		<p>系统给您的邮箱: {{$user->email}}发送了一封激活邮件,激活后方可使用!</p>
+		<p>系统给您的邮箱: {{$user->email}}发送了一封激活邮件,激活后方可使用本平台!</p>
 		@elseif($user->status == 1)
 			@if(session('succ'))
 				<p>恭喜您邮箱验证成功!</p>

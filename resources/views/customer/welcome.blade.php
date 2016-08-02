@@ -46,7 +46,7 @@
 		}
 
 		.title {
-			font-size: 86px;
+			font-size: 76px;
 			text-align: center;
 			margin-top: 12%;
 		}
@@ -76,7 +76,7 @@
 	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
 	            <span class="sr-only">Toggle navigation</span>
 	        </button>
-          	<a class="navbar-brand" href="javascript:;">梓成科技</a>
+          	<a class="navbar-brand" href="javascript:;">宁夏E营销</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -86,13 +86,13 @@
            	</ul>
           	<ul class="nav navbar-nav navbar-right">
             	<li class="dropdown">
-              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: xxx <b class="caret"></b></a>
+              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: {{$user}} <b class="caret"></b></a>
 	              	<ul class="dropdown-menu">
 	                	<li><a href="#">返回首页</a></li>
 	                	<li><a href="#">账号设置</a></li>
 	                	<li><a href="#">修改密码</a></li>
 	                	<li class="divider"></li>
-	                	<li><a href="#">安全登出</a></li>
+	                	<li><a href="{{url('auth/logout')}}">安全登出</a></li>
 	              	</ul>
             	</li>
           	</ul>
@@ -102,13 +102,12 @@
 <div class="title">
 	欢迎使用微信托管平台
 	<br>
-	<p>您还未提交您的公众账号信息，<a href="#">点我进入配置界面</a></p>
-	<p>您的服务已到期，请联系管理员</p>
+
 	<!-- Button trigger modal -->
 
 </div>
 <div style="text-align: center">
-	<p>您好，您的公众账号XXX信息已提交成功，请点击配置向导按照过程进行最后的配置</p>
+	<p>您好，您的公众账号<span class="redtext">{{$name}}</span>信息已配置成功，请点击配置向导按照过程进行最后的配置</p>
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="text-align: center">
 		配置向导
 	</button>
@@ -125,9 +124,9 @@
 			<div class="modal-body">
 				<p>第一步：进入微信公众号平台 <a href="http://mp.weixin.qq.com">mp.weixin.qq.com</a></p>
 				<p>第二步：进入“开发”->“基本配置”</p>
-				<p>第三步：URL项填写 <span class="redtext">http://wechat.zichengkeji.com/wechat.php?id=1</span></p>
-				<p>第四步：ToKen项填写 <span class="redtext">kjdkfjDKJFIAUDGIH</span></p>
-				<p>第五步：点击提交 <span class="redtext">(如果未配置成功，则联系管理员处理)</span></p>
+				<p>第三步：URL项填写 <span class="redtext">{{$url}}</span></p>
+				<p>第四步：ToKen项填写 <span class="redtext">{{$token}}</span></p>
+				<p>第五步：点击提交 <span class="redtext">(如果未配置成功，则联系客服处理)</span></p>
 			</div>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>登录模板</title>
+        <title>宁夏E营销</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,10 @@
                 color: red;
                 font-size:10px;
             }
+            .reg{
+                text-decoration:none;
+                color: #ff9000;
+            }
         </style>
     </head>
 
@@ -42,14 +46,17 @@
                 <label class="redt" id="err_pwd1"></label>
                 <input type="password" name="password_confirmation" class="passwordtwo" placeholder="确认密码" required>
                 <label class="redt" id="err_pwd2"></label>
-                <button type="submit">提交</button>
+                <button type="submit">注册</button>
+                <br>
+                <br>
+                <p>已有账号?<a type="button" href="{{url('auth/reg')}}" class="reg">点击登录</a></p>
             </form>
             <div class="connect">
-                <p>Copyright © 梓成科技 2016-2017</p>
-                <p>
+                <p>Copyright © 宁夏E营销 2016-2017</p>
+                <!--<p>
                     <a class="facebook" href=""></a>
                     <a class="twitter" href=""></a>
-                </p>
+                </p>-->
             </div>
         </div>
 		
