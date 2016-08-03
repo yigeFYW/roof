@@ -63,8 +63,6 @@ class WxController extends Controller
                     break;
                 case 'text':
                     # 文字消息...
-                    //判断关键字
-
                     $result = $this->responseText($message);
                     break;
                 case 'image':
@@ -93,6 +91,22 @@ class WxController extends Controller
     }
 
     public function responseText($message){
+
+        $new1 =  new \EasyWeChat\Message\News([
+            'title'       => "haha",
+            'description' => '...',
+            'url'         => '',
+            'image'       => "",
+            // ...
+        ]);
+        $new2 =  new \EasyWeChat\Message\News([
+            'title'       => "haha",
+            'description' => '...',
+            'url'         => '',
+            'image'       => "",
+            // ...
+        ]);
+        return [$new1];
         return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注!']);
     }
 
