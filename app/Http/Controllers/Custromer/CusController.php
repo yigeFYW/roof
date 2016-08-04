@@ -80,6 +80,11 @@ class CusController extends Controller
         if(!preg_match($pattern, $req->wechat_id)){
             return response()->json(['error'=>3,'msg'=>'公众号原始ID格式不对哦!','list'=>'wechat_id']);
         }
+        //去数据库查找原始ID是否已存在
+        $res = AccountModel::where('acc_id',$req->wechat_id)->first();
+        if($res){
+            return response()->json(['error'=>3,'msg'=>'公众号原始ID已注册,请不要重复注册!','list'=>'wechat_id']);
+        }
         if(empty(trim($req->wechat_num))){
             return response()->json(['error'=>4,'msg'=>'微信账号不能为空!','list'=>'wechat_num']);
         }
@@ -112,7 +117,7 @@ class CusController extends Controller
         $acc->regtime = time();
         $rs = $acc->save();
         if($rs){
-            return response()->json(['error'=>0,'msg'=>'url("welcome")','list'=>'']);
+            return response()->json(['error'=>0,'msg'=>url("welcome"),'list'=>'']);
         }
     }
 

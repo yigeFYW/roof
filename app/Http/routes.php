@@ -42,6 +42,16 @@ Route::get('welcome','Custromer\CusController@welcome');
 //验证邮箱路由($id为加密之后的ID)
 Route::get('test/mail/{id}','TestController@testmail');
 
+/**
+ * admin路由分组
+ *
+ *
+ */
+Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+    Route::get('text_list','SourceController@text_list');
+    Route::post('text_list','SourceController@posttext_list');
+});
+
 //测试路由
 Route::get('test',['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'TestController@index']);
 //['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'TestController@index']
@@ -51,3 +61,4 @@ Route:get('del/{uid?}','WxController@delmenu');
 Route::get('test1/{id}','TestController@in');
 
 Route::get('test2','TestController@mm');
+

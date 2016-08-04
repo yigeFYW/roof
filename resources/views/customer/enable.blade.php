@@ -202,7 +202,7 @@
 			}else if(res.error == 0){
 				window.location = res.msg;
 			}
-		});
+		},'json');
 	});
 </script>
 </html>
