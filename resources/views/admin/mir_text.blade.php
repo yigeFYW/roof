@@ -19,6 +19,17 @@
         body{
             font-family: "微软雅黑",sans-serif;
         }
+        .pagination .active span{
+            background-color: #18a689;
+            color: #efefef;
+        }
+        .pagination .active span:hover{
+            background-color: #18a689;
+        }
+        .pagination{
+            position:relative;
+            top:-30px;
+        }
     </style>
 </head>
 
@@ -124,27 +135,22 @@
                                         <th>操作</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="tbdy">
+                                    @foreach($text_list as $v)
                                     <tr>
-                                        <td><input type="checkbox" class="i-checks" value="1" name="input[]"></td>
-                                        <td class="con">速度快放假深刻的就分开设计大方</td>
-                                        <td class="id" style="display:none;">1</td>
+                                        <td><input type="checkbox" class="i-checks" value="{{$v->mid}}" name="input[]"></td>
+                                        <td class="con">{{$v->content}}</td>
+                                        <td class="id" style="display:none;">{{$v->mid}}</td>
                                         <td>
                                             <button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button>
-                                            <button class="btn btn-danger btn-sm del" delval="1">删除1</button>
+                                            <button class="btn btn-danger btn-sm del" delval="{{$v->mid}}">删除</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td><input type="checkbox" class="i-checks" value="2" name="input[]"></td>
-                                        <td class="con">速度快放假深刻的就分开设计大方</td>
-                                        <td class="id" style="display:none;">2</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button>
-                                            <button class="btn btn-danger btn-sm del" delval="2">删除2</button>
-                                        </td>
-                                    </tr>
+                                    @endforeach
+
                                     </tbody>
                                 </table>
+                                {!! $text_list->render() !!}
                             </div>
                         </div>
                     </div>
@@ -310,11 +316,25 @@
             add_con : $('#add_con').val()
         }
         $.post('{{url('admin/text_list')}}',data,function(res){
-            if(res.error == 1){
+            if(res.error > 0){
                 swal("添加失败!", '',"warning");
             }else{
-                swal("添加成功!", '',"success");
-                location.reload();
+                swal("添加成功!");
+                setTimeout('location.reload()',1000);
+//                var ht = $('#tbdy').html();
+//                ht += '<tr><td><input type="checkbox" class="i-checks" value="'+res.id+'" name="input[]"></td><td class="con">'+data.add_con+'</td><td class="id" style="display:none;">'+res.id+'</td><td><button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button><button class="btn btn-danger btn-sm del" delval="'+res.id+'">删除</button></td></tr>';
+//                $('#tbdy').html(ht);
+                /*
+                 <tr>
+                 <td><input type="checkbox" class="i-checks" value="'+res.id+'" name="input[]"></td>
+                 <td class="con">'+data.add_con+'</td>
+                 <td class="id" style="display:none;">'+res.id+'</td>
+                 <td>
+                 <button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button>
+                 <button class="btn btn-danger btn-sm del" delval="'+res.id+'">删除</button>
+                 </td>
+                 </tr>
+                */
             }
         },'json');
     });

@@ -12,9 +12,12 @@ use App\AccountModel;
 class SourceController extends Controller
 {
     //文本素材列表
-    public function text_list(){
-
-        return view('admin/mir_text');
+    public function text_list(Request $req){
+        $acc = AccountModel::where('uid',$req->user()->uid)->first();
+        $text_list = Mir_text::where('aid',$acc->aid)->orderBy('mid','desc')->paginate(10);
+        //dd($text_list);
+        $data['text_list'] = $text_list;
+        return view('admin/mir_text',$data);
     }
 
     public function posttext_list(Request $req){
@@ -25,7 +28,7 @@ class SourceController extends Controller
         $text_list->aid = $id;
         $res = $text_list->save();
         if($res){
-            return response()->json(['error'=>0,'msg'=>'添加成功!']);
+            return response()->json(['error'=>0,'msg'=>'添加成功!','id'=>$res]);
         }else{
             return response()->json(['error'=>1,'msg'=>'添加失败!']);
         }
