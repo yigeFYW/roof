@@ -77,11 +77,10 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">xxx : Welcome to INSPINIA+ Admin.</span>
+                <span class="m-r-sm text-muted welcome-message">{{$name}} : 欢迎使用{{$acc_name}}微信托管平台.</span>
             </li>
-            
             <li>
-                <a href="login.html">
+                <a href="{{url('auth/logout')}}">
                     <i class="fa fa-sign-out"></i>安全登出
                 </a>
             </li>
@@ -147,7 +146,6 @@
                                         </td>
                                     </tr>
                                     @endforeach
-
                                     </tbody>
                                 </table>
                                 {!! $text_list->render() !!}
@@ -198,7 +196,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">退出</button>
-                <button type="button" class="btn btn-primary">确认修改</button>
+                <button type="button" class="btn btn-primary" id="edit_btn">确认修改</button>
             </div>
         </div>
     </div>
@@ -208,7 +206,7 @@
         10GB of <strong>250GB</strong> Free.
     </div>
     <div>
-        <strong>Copyright</strong> Example Company &copy; 2014-2015
+        <strong>Copyright</strong> 宁夏E营销 &copy; 2014-2015
     </div>
 </div>
 
@@ -264,13 +262,22 @@
                 closeOnConfirm: false,
             }, function () {
                 getCheckBox();
-                alert(checkval);
-                swal("删除成功!", "选中项已删除!", "success");
+                var data = {
+                    _token : $("input[name='_token']").val(),
+                    del_con : checkval
+                };
+                $.post('{{url('admin/text_list_del_arr')}}',data,function(res){
+                    if(res.error > 0){
+                        swal(res.msg, "", "warning");
+                    }else{
+                        swal("删除成功!", "选中项已删除!", "success");
+                        setTimeout('location.reload()',1000);
+                    }
+                });
             });
         }else{
             swal("请选择需要删除的项目!");
         }
-        
     });
     //获取到checkbox的值  以逗号分开
     var getCheckBox = function(){
@@ -289,7 +296,10 @@
         }
     }
     $('.del').click(function(){
-        var data = $(this).attr('delval');
+        var data = {
+            _token : $("input[name='_token']").val(),
+            del_con : $(this).attr('delval')
+        };
         swal({
                 title: "确认删除此条目吗?",
                 text: "删除后数据将不可恢复!",
@@ -298,18 +308,44 @@
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "确认删除!",
                 cancelButtonText: "取消!",
-                closeOnConfirm: false,
+                closeOnConfirm: false
             }, function () {
-                //ajax        
-                swal("删除成功!", "选中项已删除!", "success");
-                //swal("删除失败!", "事实上!", "warning");
+                //ajax
+                $.post('{{url('admin/text_list_del')}}',data,function(res){
+                    if(res.error == 0){
+                        swal("删除成功!", "选中项已删除!", "success");
+                        setTimeout('location.reload()',1000);
+                    }else if(res.error > 0){
+                        swal(res.msg, "", "warning");
+                    }
+                });
             });
     });
+
+    var edit_data = {
+        _token : $("input[name='_token']").val(),
+        edit_id : null,
+        edit_con : null
+    };
+
     $('.edit').click(function(){
         var val = $(this).parent().siblings('.con').html();
-        var id = $(this).parent().siblings('.id').html();
+        edit_data.edit_id = $(this).parent().siblings('.id').html();
         $('#edit_con').html(val);
     });
+
+    $('#edit_btn').click(function(){
+        edit_data.edit_con = $('#edit_con').val();
+        $.post('{{url('admin/text_list_edit_arr')}}',edit_data,function(res){
+            if(res.error > 0){
+                swal(res.msg, "", "warning");
+            }else{
+                swal("修改成功!", "", "success");
+                setTimeout('location.reload()',1000);
+            }
+        });
+    });
+
     $('#addbtn').click(function(){
         var data = {
             _token : $("input[name='_token']").val(),
@@ -321,24 +357,9 @@
             }else{
                 swal("添加成功!");
                 setTimeout('location.reload()',1000);
-//                var ht = $('#tbdy').html();
-//                ht += '<tr><td><input type="checkbox" class="i-checks" value="'+res.id+'" name="input[]"></td><td class="con">'+data.add_con+'</td><td class="id" style="display:none;">'+res.id+'</td><td><button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button><button class="btn btn-danger btn-sm del" delval="'+res.id+'">删除</button></td></tr>';
-//                $('#tbdy').html(ht);
-                /*
-                 <tr>
-                 <td><input type="checkbox" class="i-checks" value="'+res.id+'" name="input[]"></td>
-                 <td class="con">'+data.add_con+'</td>
-                 <td class="id" style="display:none;">'+res.id+'</td>
-                 <td>
-                 <button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button>
-                 <button class="btn btn-danger btn-sm del" delval="'+res.id+'">删除</button>
-                 </td>
-                 </tr>
-                */
             }
         },'json');
     });
 </script>
 </body>
-
 </html>

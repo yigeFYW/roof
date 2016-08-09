@@ -50,6 +50,9 @@ Route::get('test/mail/{id}','TestController@testmail');
 Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     Route::get('text_list','SourceController@text_list');
     Route::post('text_list','SourceController@posttext_list');
+    Route::post('text_list_del','SourceController@postDelText_list');
+    Route::post('text_list_del_arr','SourceController@postDelText_list_arr');
+    Route::post('text_list_edit_arr','SourceController@postEditText_list_arr');
 });
 
 //测试路由

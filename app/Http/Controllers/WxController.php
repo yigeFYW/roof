@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Keyword;
+use App\Mir_text;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -9,14 +11,14 @@ use App\Http\Controllers\Controller;
 use App\AccountModel;
 class WxController extends Controller
 {
-    public $pz = null;
+    public $acc = null;
     //微信验证
     public function server($uid){
         //从数据库查出对应的微信配置
         //$pz = AccountModel::where('uid',$uid)->first(['aid','acc_appid','acc_secret','acc_aeskey','acc_token']);
 
         $pz = AccountModel::find($uid);
-        $this->$pz = $pz;
+        $this->acc = $pz;
         $options = [
                 /**
                  * Debug 模式，bool 值：true/false
@@ -63,7 +65,35 @@ class WxController extends Controller
                     break;
                 case 'text':
                     # 文字消息...
-                    $result = $this->responseText($message);
+                    //判断关键字
+                    $keyword = $message->Content;
+                    //查出此公众号设置的关键字回复
+                    $aid = $this->acc->aid;
+                    $arr = Keyword::where(['aid'=>$aid])->get();
+                    $mid = 0;
+                    $rescat = 0;
+                    foreach($arr as $k=>$v){
+                        if($v['word'] == $keyword){
+                            $mid = $arr[$k]['mid'];
+                            $rescat = $arr[$k]['rescat'];
+                        }
+                    }
+                    //如果两个参数都为0   则表示没有匹配到关键字  回复默认信息
+                    if($mid == 0 || $rescat == 0){
+                        //回复默认消息[您好!欢迎关注+公众号名称]
+                        return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注'.$this->acc->acc_name.'!']);
+                    }
+                    //匹配到关键字 则查出相应关键字
+                    switch ($rescat){
+                        case 1://回复文本消息
+                            $con = Mir_text::find($mid)->content;
+                            return new \EasyWeChat\Message\Text(['content' => $con]);
+                        break;
+                        case 2://回复图片消息
+
+                        break;
+                    }
+                    //$result = $this->responseText($message);
                     break;
                 case 'image':
                     # 图片消息...
@@ -85,7 +115,7 @@ class WxController extends Controller
                     # code...
                     break;
             }
-            return $result;
+            //return $result;
         });
         return $wechat->serve();
     }
