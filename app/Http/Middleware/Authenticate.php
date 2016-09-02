@@ -38,7 +38,7 @@ class Authenticate
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('auth/login')->with('info','alert("请先登录!");');
+                return redirect()->guest('auth/login');
             }
         }
         
