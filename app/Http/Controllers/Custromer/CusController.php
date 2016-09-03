@@ -28,13 +28,14 @@ class CusController extends Controller
         if($status == 0){
             //进入提示发送邮箱验证码
             $data['user'] = $users;
-
             return view('customer/start',$data);
         }else if($status == 1){
             //用户没有配置公众号
             return redirect('cus/start')->with('status',1);
         }else if($status == 2){
             return redirect('welcome');
+        }else if($status == 3){
+            return redirect('admin/text_list');
         }
     }
 
@@ -126,11 +127,15 @@ class CusController extends Controller
         $data['user'] = $users->name;
         //根据用户id取公众号信息
         $acc = AccountModel::where('uid',$req->user()->uid)->first();
-        if($users->status >= 2){
+        if($users->status == 2){
             $data['token'] = $acc->acc_token;
             $data['name'] = $acc->acc_name;
+            $data['rep'] = $acc->rep;
             $data['url'] = "http://".$_SERVER['SERVER_NAME'].'/wechat/'.$acc->aid.'.html';
             return view('customer/welcome',$data);
+        }
+        if($users->status == 3){
+            return view('errors/503');
         }
         //随机生成token
         $token = $this->shufflestr();
@@ -141,6 +146,10 @@ class CusController extends Controller
             $users->save();
             $data['token'] = $token;
             $data['name'] = $acc->acc_name;
+            $rep = $this->shufflestr(4);
+            $acc->rep = $rep;
+            $acc->save();
+            $data['rep'] = $rep;
             //生成配置URL
             $data['url'] = "http://".$_SERVER['SERVER_NAME'].'/wechat/'.$rs.'.html';
             return view('customer/welcome',$data);

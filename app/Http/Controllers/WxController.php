@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\AccountModel;
+use Overtrue\Socialite\User;
+use Illuminate\Support\Facades\DB;
+
 class WxController extends Controller
 {
+
     public $acc = null;
     //微信验证
     public function server($uid){
@@ -67,6 +71,16 @@ class WxController extends Controller
                     # 文字消息...
                     //判断关键字
                     $keyword = $message->Content;
+                    //判断是否为验证信息关键字
+                    if($keyword == $this->acc->rep && $this->acc->rep_status == 0){
+                        $acc = AccountModel::find($this->acc->uid);
+                        $acc->rep_status = 1;
+                        $acc->rep = '';
+                        $acc->save();
+                        //找到该用户,将用户的status改为3
+                        DB::table('users')->where('uid',$acc->uid)->update(['status'=>3]);
+                        return new \EasyWeChat\Message\Text(['content' => '您的公众号已验证通过,请退出重新登录!']);
+                    }
                     //查出此公众号设置的关键字回复
                     $aid = $this->acc->aid;
                     $arr = Keyword::where(['aid'=>$aid])->get();
@@ -121,7 +135,6 @@ class WxController extends Controller
     }
 
     public function responseText($message){
-
         $new1 =  new \EasyWeChat\Message\News([
             'title'       => "haha",
             'description' => '...',
@@ -137,7 +150,7 @@ class WxController extends Controller
             // ...
         ]);
         return [$new1];
-        return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注!']);
+        //return new \EasyWeChat\Message\Text(['content' => '您好！欢迎关注!']);
     }
 
     public function delmenu($uid = 1){

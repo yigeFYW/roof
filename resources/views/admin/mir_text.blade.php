@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>公众号基本功能</title>
-
     <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
-
     <link href="/admin/css/animate.css" rel="stylesheet">
     <link href="/admin/css/style.css" rel="stylesheet">
     <link href="/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
@@ -34,18 +30,16 @@
 </head>
 
 <body>
-
 <div id="wrapper">
-
 <nav class="navbar-default navbar-static-side lift-nav" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element"> <span>
-                    <img src="/admin/img/zender_logo.png" alt="">
+                    <img src="/admin/img/logo.png" alt="" style="width:100%;">
                 </div>
                 <div class="logo-element">
-                    IN+
+                    A!
                 </div>
             </li>
             <li  class="active">
@@ -77,7 +71,7 @@
         </div>
         <ul class="nav navbar-top-links navbar-right">
             <li>
-                <span class="m-r-sm text-muted welcome-message">{{$name}} : 欢迎使用{{$acc_name}}微信托管平台.</span>
+                <span class="m-r-sm text-muted welcome-message">{{$name}} : 欢迎使用小A微信托管平台.</span>
             </li>
             <li>
                 <a href="{{url('auth/logout')}}">
@@ -85,7 +79,6 @@
                 </a>
             </li>
         </ul>
-
     </nav>
 </div>
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -201,20 +194,16 @@
         </div>
     </div>
 </div>
-<div class="footer" >
-    <div class="pull-right">
-        10GB of <strong>250GB</strong> Free.
+    <div class="footer" >
+        <div class="pull-right">
+            10GB of <strong>250GB</strong> Free.
+        </div>
+        <div>
+            <strong>Copyright</strong> 宁夏E营销 &copy; 2014-2015
+        </div>
     </div>
-    <div>
-        <strong>Copyright</strong> 宁夏E营销 &copy; 2014-2015
-    </div>
-</div>
-
 </div>
 </div>
-
-
-
 <!-- Mainly scripts -->
 <script src="/admin/js/jquery-2.1.1.js"></script>
 <script src="/admin/js/bootstrap.min.js"></script>
@@ -223,21 +212,15 @@
 
 <!-- Peity -->
     <script src="/admin/js/plugins/peity/jquery.peity.min.js"></script>
-
     <!-- Custom and plugin javascript -->
     <script src="/admin/js/inspinia.js"></script>
     <script src="/admin/js/plugins/pace/pace.min.js"></script>
-
     <!-- iCheck -->
     <script src="/admin/js/plugins/iCheck/icheck.min.js"></script>
-
     <!-- Peity -->
     <script src="/admin/js/demo/peity-demo.js"></script>
-    
     <!-- Sweet alert -->
     <script src="/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
-
-
 
 <script>
     var checkval = "";

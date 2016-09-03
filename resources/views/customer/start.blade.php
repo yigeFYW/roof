@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>欢迎您使用</title>
+	<title>欢迎您使用小A微信托管平台</title>
 
 	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/flat-ui.min.css">
@@ -69,7 +69,7 @@
 	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
 	            <span class="sr-only">Toggle navigation</span>
 	        </button>
-          	<a class="navbar-brand" href="javascript:;">宁夏E营销</a>
+          	<a class="navbar-brand" href="javascript:;">小A微信托管平台</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -81,7 +81,7 @@
             	<li class="dropdown">
               		<a href="#" class="dropdown-toggle" data-toggle="dropdown">欢迎: {{$user->name}} <b class="caret"></b></a>
 	              	<ul class="dropdown-menu">
-	                	<li><a href="#">返回首页</a></li>
+	                	<li><a href="{{url('/')}}">返回首页</a></li>
 	                	<li><a href="#">修改密码</a></li>
 	                	<li class="divider"></li>
 	                	<li><a href="{{url('auth/logout')}}">安全登出</a></li>
@@ -92,7 +92,7 @@
     </nav>
 </header>
 <div class="title">
-	欢迎使用微信托管平台
+	欢迎使用<span class="redtext">小A</span>微信托管平台
 	<br>
 	@if($user->status == 0)
 		<p>系统给您的邮箱: {{$user->email}}发送了一封激活邮件,激活后方可使用本平台!</p>
@@ -104,7 +104,7 @@
 		@endif
 </div>
 <footer>
-	<p>copyright © <a href="http://hhsblog.cn">一个放羊娃 技术支持</a> 2016-2017 </p>
+	<p>copyright © <a href="http://wp.hhsblog.cn">Mr.Adam 技术支持</a> 2016-2017 </p>
 </footer>
 </body>
 </html>
