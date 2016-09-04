@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRepToAccount extends Migration
+class AddRepToAccounts extends Migration
 {
     /**
      * Run the migrations.
