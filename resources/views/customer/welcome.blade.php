@@ -61,7 +61,6 @@
 		}
 		#div>div{
 			height:200px;
-
 		}
 		.redtext{
 			color: #ff9000;

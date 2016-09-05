@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use GuzzleHttp\Middleware;
+use App\Wxapi\Checkapi;
 class TestController extends Controller
 {
     /**
@@ -45,6 +46,7 @@ class TestController extends Controller
     }
 
     public function mm(){
-        
+        $a = new Checkapi(11);
+        $a->test();
     }
 }

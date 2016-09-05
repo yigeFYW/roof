@@ -44,17 +44,29 @@ Route::get('test/mail/{id}','TestController@testmail');
 
 /**
  * admin路由分组
- *
- *
  */
+
 Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
+
+    //文本素材路由
     Route::get('text_list','SourceController@text_list');
     Route::post('text_list','SourceController@posttext_list');
     Route::post('text_list_del','SourceController@postDelText_list');
     Route::post('text_list_del_arr','SourceController@postDelText_list_arr');
     Route::post('text_list_edit_arr','SourceController@postEditText_list_arr');
+
+    //欢迎语设置路由
+    Route::get('wel_list','BaseController@wel_list');
+
 });
 
+
+/**
+ * admin路由结束
+ *
+ *
+ *
+ */
 //测试路由
 Route::get('test',['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'TestController@index']);
 //['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'TestController@index']

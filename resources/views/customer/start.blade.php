@@ -59,6 +59,9 @@
 			text-align: center;
 			color: #666;
 		}
+		.redtext{
+			color: #ff9000;
+		}
 	</style>
 </head>
 <body>

@@ -4,13 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>公众号基本功能</title>
-    <link href="/admin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/admin/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/admin/css/animate.css" rel="stylesheet">
-    <link href="/admin/css/style.css" rel="stylesheet">
-    <link href="/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
-    <!-- Sweet Alert -->
-    <link href="/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    @include('comm.css')
     <style>
         body{
             font-family: "微软雅黑",sans-serif;
@@ -31,38 +25,7 @@
 
 <body>
 <div id="wrapper">
-<nav class="navbar-default navbar-static-side lift-nav" role="navigation">
-    <div class="sidebar-collapse">
-        <ul class="nav metismenu" id="side-menu">
-            <li class="nav-header">
-                <div class="dropdown profile-element"> <span>
-                    <img src="/admin/img/logo.png" alt="" style="width:100%;">
-                </div>
-                <div class="logo-element">
-                    A!
-                </div>
-            </li>
-            <li  class="active">
-                <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">公众号基本功能</span> <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level collapse">
-                    <li  class="active"><a href="index.html">素材列表</a></li>
-                    <li><a href="dashboard_2.html">微信欢迎语</a></li>
-                    <li><a href="dashboard_3.html">微信自动回复</a></li>
-                    <li><a href="dashboard_4_1.html">微信群发消息</a></li>
-                    <li><a href="dashboard_5.html">自定义菜单设置</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
-            </li>
-            
-            <li class="special_link">
-                <a href="package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
+@include('comm.menu')
 <div id="page-wrapper" class="gray-bg">
 <div class="row border-bottom">
     <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -106,51 +69,50 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>文本素材列表</h5>
-                            
-                        </div>
-                        <div class="ibox-content">
-                            <div class="row">
-                                <div class="col-sm-5 m-b-xs">
-                                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addmodal">添加</button>
-                                    &nbsp;
-                                    <button class="btn btn-danger btn-sm" id="zdel">删除</button>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>文本内容</th>
-                                        <th>操作</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="tbdy">
-                                    @foreach($text_list as $v)
-                                    <tr>
-                                        <td><input type="checkbox" class="i-checks" value="{{$v->mid}}" name="input[]"></td>
-                                        <td class="con">{{$v->content}}</td>
-                                        <td class="id" style="display:none;">{{$v->mid}}</td>
-                                        <td>
-                                            <button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button>
-                                            <button class="btn btn-danger btn-sm del" delval="{{$v->mid}}">删除</button>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                                {!! $text_list->render() !!}
-                            </div>
+                <div class="ibox-title">
+                    <h5>文本素材列表</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-5 m-b-xs">
+                            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addmodal">添加</button>
+                            &nbsp;
+                            <button class="btn btn-danger btn-sm" id="zdel">删除</button>
                         </div>
                     </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>文本内容</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbdy">
+                            @foreach($text_list as $v)
+                            <tr>
+                                <td><input type="checkbox" class="i-checks" value="{{$v->mid}}" name="input[]"></td>
+                                <td class="con">{{$v->content}}</td>
+                                <td class="id" style="display:none;">{{$v->mid}}</td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm edit" data-toggle="modal" data-target="#editmodal">编辑</button>
+                                    <button class="btn btn-danger btn-sm del" delval="{{$v->mid}}">删除</button>
+                                </td>
+                            </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        {!! $text_list->render() !!}
+                    </div>
                 </div>
-            </div>    
+            </div>
         </div>
+    </div>
+</div>
 <div class="modal inmodal" id="addmodal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content animated flipInY">
+        <div class="modal-content animated fadeIn">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">添加文本素材</h4>
@@ -174,7 +136,7 @@
 
 <div class="modal inmodal" id="editmodal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content animated flipInY">
+        <div class="modal-content animated fadeIn">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">修改文本素材</h4>
@@ -194,34 +156,10 @@
         </div>
     </div>
 </div>
-    <div class="footer" >
-        <div class="pull-right">
-            10GB of <strong>250GB</strong> Free.
-        </div>
-        <div>
-            <strong>Copyright</strong> 宁夏E营销 &copy; 2014-2015
-        </div>
-    </div>
+@include('comm.admin_footer')
+@include('comm.admin_javascript')
 </div>
 </div>
-<!-- Mainly scripts -->
-<script src="/admin/js/jquery-2.1.1.js"></script>
-<script src="/admin/js/bootstrap.min.js"></script>
-<script src="/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-<!-- Peity -->
-    <script src="/admin/js/plugins/peity/jquery.peity.min.js"></script>
-    <!-- Custom and plugin javascript -->
-    <script src="/admin/js/inspinia.js"></script>
-    <script src="/admin/js/plugins/pace/pace.min.js"></script>
-    <!-- iCheck -->
-    <script src="/admin/js/plugins/iCheck/icheck.min.js"></script>
-    <!-- Peity -->
-    <script src="/admin/js/demo/peity-demo.js"></script>
-    <!-- Sweet alert -->
-    <script src="/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
-
 <script>
     var checkval = "";
         $(document).ready(function(){
@@ -242,7 +180,7 @@
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "确认删除!",
                 cancelButtonText: "取消!",
-                closeOnConfirm: false,
+                closeOnConfirm: false
             }, function () {
                 getCheckBox();
                 var data = {
