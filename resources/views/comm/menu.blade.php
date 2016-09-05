@@ -17,9 +17,9 @@
                 <ul class="nav nav-second-level collapse">
                     <li class="active"><a href="{{url('admin/text_list')}}">素材列表</a></li>
                     <li><a href="{{url('admin/wel_list')}}">微信欢迎语</a></li>
-                    <li><a href="dashboard_3.html">微信自动回复</a></li>
-                    <li><a href="dashboard_4_1.html">微信群发消息</a></li>
-                    <li><a href="dashboard_5.html">自定义菜单设置</a></li>
+                    <li><a href="#">微信自动回复</a></li>
+                    <li><a href="#">微信群发消息</a></li>
+                    <li><a href="#">自定义菜单设置</a></li>
                 </ul>
             </li>
             <li>

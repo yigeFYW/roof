@@ -2,7 +2,7 @@
 <html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
-        <title>宁夏E营销</title>
+        <title>微信托管平台|小A出品</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,7 +46,7 @@
             </form>
 
             <div class="connect">
-                <p>Copyright © 宁夏E营销 2016-2017</p>
+                <p>Copyright © <a target="_blank" href="http://wp.hhsblog.cn">Mr.Adam</a> 2016-2017</p>
                 <!--<p>
                     <a class="facebook" href=""></a>
                     <a class="twitter" href=""></a>
@@ -61,16 +61,6 @@
         <script src="/assets/js/scripts.js"></script>
 
     </body>
-
-    @if(session('info'))
-        <script>
-            var ale = function () {
-                {!! session('info') !!}
-            }
-            setTimeout(ale,800);
-        </script>
-    @endif
-
 </html>
 
 
