@@ -1,5 +1,4 @@
 <!-- Mainly scripts -->
-<script src="/admin/js/jquery-2.1.1.js"></script>
 <script src="/admin/js/bootstrap.min.js"></script>
 <script src="/admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
@@ -15,3 +14,4 @@
 <script src="/admin/js/demo/peity-demo.js"></script>
 <!-- Sweet alert -->
 <script src="/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
+

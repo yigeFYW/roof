@@ -44,7 +44,6 @@
 			display: table-cell;
 			vertical-align: middle;
 		}
-
 		.title {
 			font-size: 96px;
 			text-align: center;
@@ -104,6 +103,7 @@
 					<strong>注意！</strong>
 					请登录微信公众平台 <a href="http://mp.weixin.qq.com" target="_blank">http://mp.weixin.qq.com</a> ，按照以下说明如实填写您的公众号信息,如果填错,可能会影响您的正常使用！
 				</div>
+
 				<form class="form-horizontal" action="" method="post">
 					{!! csrf_field() !!}
 					<div class="form-group">

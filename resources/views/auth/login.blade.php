@@ -46,7 +46,7 @@
             </form>
 
             <div class="connect">
-                <p>Copyright © <a target="_blank" href="http://wp.hhsblog.cn">Mr.Adam</a> 2016-2017</p>
+                <p>Copyright © Mr.Adam  2016-2017</p>
                 <!--<p>
                     <a class="facebook" href=""></a>
                     <a class="twitter" href=""></a>
