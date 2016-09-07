@@ -41,6 +41,7 @@
         if(url.indexOf(va) >= 0){
             menu_list.removeClass('active');
             menu_list[i].className = menu_list[i].className +' '+'active';
+            $(menu_list[i]).find('a').attr('href',"javascript:;");
             $(menu_list[i]).parent().parent().addClass('active');
         }
     }
