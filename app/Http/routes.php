@@ -57,8 +57,7 @@ Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 
     //欢迎语设置路由
     Route::get('wel_list','BaseController@wel_list');
-
-
+    
     //系统设置路由
     Route::get('auth','RoofController@cus');
     Route::post('auth','RoofController@postcus');

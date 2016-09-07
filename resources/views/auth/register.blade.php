@@ -49,7 +49,7 @@
                 <button type="submit">注册</button>
                 <br>
                 <br>
-                <p>已有账号?<a type="button" href="{{url('auth/reg')}}" class="reg">点击登录</a></p>
+                <p>已有账号?<a type="button" href="{{url('auth/login')}}" class="reg">点击登录</a></p>
             </form>
             <div class="connect">
                 <p>Copyright © Mr.Adam 2016-2017</p>
