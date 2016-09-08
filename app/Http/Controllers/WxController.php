@@ -73,7 +73,7 @@ class WxController extends Controller
                     $keyword = $message->Content;
                     //判断是否为验证信息关键字
                     if($keyword == $this->acc->rep && $this->acc->rep_status == 0){
-                        $acc = AccountModel::find($this->acc->uid);
+                        $acc = AccountModel::find($this->acc->aid);
                         $acc->rep_status = 1;
                         $acc->rep = '';
                         $acc->save();
