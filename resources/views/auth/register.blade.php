@@ -41,6 +41,7 @@
             </div>
             <h4>欢迎使用A+微信托管平台</h4>
             <p>本平台仅供测试使用!<br>如有BUG,欢迎来信指正!</p>
+
             <form class="m-t" role="form" action="{{url('auth/reg')}}" method="post" onsubmit="return checkSubmit();">
                 {!! csrf_field() !!}
                 <div class="form-group">
@@ -86,9 +87,12 @@
        "showMethod": "fadeIn",
        "hideMethod": "fadeOut"
    };
-   $('.tool').tooltip();
+    $('.tool').tooltip();
+    var test = false;
+    var abs = false;
+    var mail_patt = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     function checkSubmit(){
-        var mail_patt = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+
         var mail = $("input[name='email']").val();
         var name = $("input[name='name']").val();
         var pwd1 = $("input[name='password']").val();
@@ -113,6 +117,30 @@
             toastr.warning("两次输入的密码不同!");
             return false;
         }
+        //判断邮箱是否注册过
+        if(!test){
+            toastr.warning("该邮箱已被注册!请换个邮箱注册!");
+            return false;
+        }
     }
+    $('input[name=email]').change(function(){
+        var mail = $(this).val();
+        var data = {
+            email:mail
+        };
+        if(mail_patt.test(mail)){
+            $.post('{{url('check/check_mail')}}',data,function(res){
+                if(res.error == 1){
+                    toastr.warning("该邮箱已被注册!");
+                }else if(res.error == 0){
+                    test = true;
+                    toastr.success("该邮箱可以注册!");
+                }
+            });
+        }
+    });
+    @if(session('status'))
+        toastr.warning("{{session('status')}}");
+    @endif
 </script>
 </html>

@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Crypt;
 use Nette\Mail\Message;
 use Nette\Mail\SmtpMailer;
 use App\User;
-
 class EmailMiddleware
 {
     /**
@@ -21,7 +20,11 @@ class EmailMiddleware
     public function handle($request, Closure $next)
     {
         $rs = $next($request);
-        $users = User::find($request->user()->uid);
+        $a = Auth::user();
+        if(!$a){
+            return redirect('auth/reg')->with('status',"注册失败!");
+        }
+        $users = User::find($a->uid);
         //存入数据库
         $users->test_mail = str_random(20);
         $users->save();

@@ -44,6 +44,14 @@ class TestController extends Controller
             return redirect('cus/start')->with('succ','1');
         }
     }
+    public function checkMail(Request $req){
+        $user = User::where('email',$req->email)->first();
+        if($user){
+            return response()->json(['error'=>1,'msg'=>'该邮箱已被注册,请换个邮箱!']);
+        }else{
+            return response()->json(['error'=>0]);
+        }
+    }
 
     public function mm(){
         $con = '

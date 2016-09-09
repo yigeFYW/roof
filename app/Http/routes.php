@@ -20,8 +20,10 @@ Route::any('wechat/{uid}.html','WxController@server');
 
 //注册路由
 Route::get('auth/reg','Auth\AuthController@getRegister');
-//
+//注册提交路由
 Route::post('auth/reg',['middleware'=>['App\Http\Middleware\EmailMiddleware'],'uses'=>'Auth\AuthController@postRegister']);
+//ajax验证邮箱是否注册路由
+Route::post('check/check_mail','TestController@checkMail');
 //登录路由
 Route::get('auth/login','Auth\AuthController@getLogin');
 Route::post('auth/login','Auth\AuthController@postLogin');
