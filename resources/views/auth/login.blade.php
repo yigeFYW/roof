@@ -57,15 +57,32 @@
             <p class="m-t">来信请寄 <span style="color:#ff9000;">1015517471@qq.com</span></p>
         </div>
     </div>
-
     <!-- Mainly scripts -->
     <script src="/admin/js/jquery-2.1.1.js"></script>
     <script src="/admin/js/bootstrap.min.js"></script>
     <!-- Toastr script -->
     <script src="/admin/js/plugins/toastr/toastr.min.js"></script>
-
 </body>
 <script>
     $('.tool').tooltip();
+    @if($errors->has('email'))
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": true,
+        "preventDuplicates": false,
+        "positionClass": "toast-bottom-center",
+        "onclick": null,
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "800",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    toastr.warning("邮箱或密码不正确!");
+        @endif
 </script>
 </html>

@@ -20,7 +20,6 @@ class CusController extends Controller
      * @status 为3 则为绑定微信号用户
      */
     public function index(Request $req){
-
         $users = User::find($req->user()->uid);
         $users->lastlogin = time();
         $users->save();

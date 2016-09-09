@@ -77,7 +77,7 @@
        "preventDuplicates": false,
        "positionClass": "toast-bottom-center",
        "onclick": null,
-       "showDuration": "400",
+       "showDuration": "800",
        "hideDuration": "1000",
        "timeOut": "2000",
        "extendedTimeOut": "800",
@@ -85,7 +85,7 @@
        "hideEasing": "linear",
        "showMethod": "fadeIn",
        "hideMethod": "fadeOut"
-   }
+   };
    $('.tool').tooltip();
     function checkSubmit(){
         var mail_patt = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
