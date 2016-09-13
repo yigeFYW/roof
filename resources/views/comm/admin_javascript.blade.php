@@ -14,4 +14,5 @@
 <script src="/admin/js/demo/peity-demo.js"></script>
 <!-- Sweet alert -->
 <script src="/admin/js/plugins/sweetalert/sweetalert.min.js"></script>
-
+<!-- Toastr script -->
+<script src="/admin/js/plugins/toastr/toastr.min.js"></script>

@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 //微信验证
 Route::any('wechat/{uid}.html','WxController@server');
-
 //注册路由
 Route::get('auth/reg','Auth\AuthController@getRegister');
 //注册提交路由
@@ -63,6 +62,9 @@ Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     //系统设置路由
     Route::get('auth','RoofController@cus');
     Route::post('auth','RoofController@postcus');
+    //修改密码路由
+    Route::get('pwd','RoofController@pwd');
+    Route::post('pwd','RoofController@postpwd');
 });
 
 

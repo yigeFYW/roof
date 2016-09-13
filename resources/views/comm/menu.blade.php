@@ -3,10 +3,10 @@
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-                    <img src="/admin/img/logo.png" alt="" style="width:100%;">
+                    <img src="/admin/img/A+.png" alt="" style="width:100%;">
                 </div>
                 <div class="logo-element">
-                    A!
+                    A+
                 </div>
             </li>
             <li class="admin_m" a="index">
@@ -27,7 +27,7 @@
                 <ul class="nav nav-second-level collapse">
                     <li class="admin_m" a="auth"><a href="{{url('admin/auth')}}">授权设置</a></li>
                     <li class="admin_m"><a href="#">支付认证</a></li>
-                    <li class="admin_m"><a href="#">修改密码</a></li>
+                    <li class="admin_m" a="pwd"><a href="{{url('admin/pwd')}}">修改密码</a></li>
                 </ul>
             </li>
         </ul>

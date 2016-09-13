@@ -104,6 +104,13 @@
                                     <span class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">认证Token(必填) :</label>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control" id="inputPassword3" value="{{$acc_list->acc_token}}" name="wechat_token" placeholder="您的消息认证Token">
+                                    </div>
+                                    <span class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
                                     <label for="inputPassword3" class="col-sm-2 control-label">公众号AppId(必填) :</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control" id="inputPassword3" name="appid" value="{{$acc_list->acc_appid}}" placeholder="您的开发者AppID" disabled>
@@ -141,4 +148,45 @@
     </div>
 </div>
 </body>
+<script>
+    var data = {
+        wechat_name:null,
+        wechat_num:null,
+        appsecret:null,
+        aeskey:null,
+        token:null,
+        _token:$('input[name=_token]').val()
+    };
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": true,
+        "preventDuplicates": false,
+        "positionClass": "toast-bottom-center",
+        "onclick": null,
+        "showDuration": "400",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "800",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+    $('#sub').click(function(){
+        data.wechat_name = $("input[name=wechat_name]").val();
+        data.wechat_num = $("input[name=wechat_num]").val();
+        data.appsecret = $("input[name=appsecret]").val();
+        data.aeskey = $("input[name=aeskey]").val();
+        data.token = $("input[name=token]").val();
+        $.post('{{url('admin/auth')}}',data,function(res){
+            //toastr.warning("邮箱或密码不正确!");
+            if(res.error > 0){
+                toastr.warning(res.msg);
+            }else if(res.error == 0){
+                toastr.success("修改成功,请到公众号后台进行相应配置!");
+            }
+        },'json');
+    });
+</script>
 </html>
