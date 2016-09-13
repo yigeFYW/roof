@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>欢迎您使用小A微信托管平台</title>
+	<title>欢迎您使用A+微信托管平台</title>
 
 	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/flat-ui.min.css">
@@ -68,7 +68,7 @@
 	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
 	            <span class="sr-only">Toggle navigation</span>
 	        </button>
-          	<a class="navbar-brand" href="javascript:;">小A微信托管平台</a>
+          	<a class="navbar-brand" href="javascript:;">A+微信托管平台</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

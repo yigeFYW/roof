@@ -75,7 +75,7 @@
 	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-5">
 	            <span class="sr-only">Toggle navigation</span>
 	        </button>
-          	<a class="navbar-brand" href="javascript:;">小A微信托管平台</a>
+          	<a class="navbar-brand" href="javascript:;">A+微信托管平台</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -89,7 +89,7 @@
 	              	<ul class="dropdown-menu">
 	                	<li><a href="{{url('/')}}">返回首页</a></li>
 	                	<li><a href="#">账号设置</a></li>
-	                	<li><a href="#">修改密码</a></li>
+	                	<li><a href="{{url('')}}">修改密码</a></li>
 	                	<li class="divider"></li>
 	                	<li><a href="{{url('auth/logout')}}">安全登出</a></li>
 	              	</ul>

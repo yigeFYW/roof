@@ -40,6 +40,12 @@ Route::get('/cus/enable','Custromer\CusController@enable');
 Route::post('/cus/enable','Custromer\CusController@postenable');
 //进入后台路由(配置完成的欢迎界面)
 Route::get('welcome','Custromer\CusController@welcome');
+//修改密码路由
+Route::get('/cus/pwd','Custromer\CusController@pwd');
+Route::post('/cus/pwd','Custromer\CusController@postpwd');
+//修改配置项路由
+Route::get('/cus/roof','Custromer\CusController@roof');
+Route::post('/cus/roof','Custromer\CusController@postroof');
 //验证邮箱路由($id为加密之后的ID)
 Route::get('test/mail/{id}','TestController@testmail');
 
