@@ -45,7 +45,7 @@ class RoofController extends Controller
         if(mb_strlen($req->token) >=200 ){
             return response()->json(['error'=>4,'msg'=>'token过长,请填写较短的token!']);
         }
-        if(mb_strlen($req->token) <=6 ){
+        if(strlen($req->token) <=6 ){
             return response()->json(['error'=>4,'msg'=>'token过短,请填写不少于6位的认证token']);
         }
         $pattern = "/^\w{32}$/";

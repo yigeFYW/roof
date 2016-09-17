@@ -178,7 +178,7 @@
         data.wechat_num = $("input[name=wechat_num]").val();
         data.appsecret = $("input[name=appsecret]").val();
         data.aeskey = $("input[name=aeskey]").val();
-        data.token = $("input[name=token]").val();
+        data.token = $("input[name=wechat_token]").val();
         $.post('{{url('admin/auth')}}',data,function(res){
             //toastr.warning("邮箱或密码不正确!");
             if(res.error > 0){
