@@ -69,6 +69,9 @@ Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
     //添加素材路由
     Route::get('media_add','MediaController@media_add');
 
+    //图片素材路由
+    Route::get('media_img','MediaController@media_img');
+
     //系统设置路由
     Route::get('auth','RoofController@cus');
     Route::post('auth','RoofController@postcus');

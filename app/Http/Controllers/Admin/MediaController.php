@@ -16,4 +16,10 @@ class MediaController extends Controller{
         $data['name'] = $user->name;
         return view('admin/media_add',$data);
     }
+
+    public function media_img(Request $req){
+        $user = Auth::user();
+        $data['name'] = $user->name;
+        return view('admin/media_img',$data);
+    }
 }

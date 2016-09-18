@@ -25,8 +25,8 @@
             <li  class="admin_m">
                 <a href="javascript:;"><i class="fa fa-camera"></i> <span class="nav-label">媒体库</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li class="admin_m"><a href="#">图片素材</a></li>
-                    <li class="admin_m" a="media_add"><a href="#">添加素材</a></li>
+                    <li class="admin_m" a="media_img"><a href="{{url('admin/media_img')}}">图片素材</a></li>
+                    <li class="admin_m" a="media_add"><a href="{{url('admin/media_add')}}">添加素材</a></li>
                 </ul>
             </li>
             <li class="admin_m">
