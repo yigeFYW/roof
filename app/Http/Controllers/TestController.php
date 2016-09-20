@@ -13,6 +13,7 @@ use App\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use GuzzleHttp\Middleware;
 use App\Wxapi\Checkapi;
+use App\Upload\Upload;
 class TestController extends Controller
 {
     /**
@@ -51,6 +52,18 @@ class TestController extends Controller
         }else{
             return response()->json(['error'=>0]);
         }
+    }
+
+
+    public function upload(){
+        return view('upload');
+    }
+    public function uploadpost(Request $req){
+        $arr = new Upload();
+        for($i=0;$i<count($arr->info());$i++){
+            $arr->up_file('haha'.$i.'.jpg',public_path().'/admins/09',$i);
+        }
+        dd($arr->info());
     }
 
     public function mm(){

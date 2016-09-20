@@ -97,3 +97,6 @@ Route::get('test1/{id}','TestController@in');
 
 Route::get('test2','TestController@mm');
 
+Route::get('test3','TestController@upload');
+Route::post('test3','TestController@uploadpost');
+
