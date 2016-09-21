@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>上传素材</title>
     @include('comm.css')
+    <link href="css/plugins/dropzone/dropzone.css" rel="stylesheet">
     <style>
         body{
             font-family: "微软雅黑",sans-serif;
@@ -64,7 +65,11 @@
                             <h5>上传多媒体素材</h5>
                         </div>
                         <div class="ibox-content">
-
+                            <form id="my-awesome-dropzone" class="dropzone" action="{{url('test3')}}">
+                                {!! csrf_field() !!}
+                                <div class="dropzone-previews"></div>
+                                <button type="submit" class="btn btn-primary pull-right">上传!</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -72,10 +77,42 @@
         </div>
         @include('comm.admin_footer')
         @include('comm.admin_javascript')
+        <script src="/admin/js/plugins/dropzone/dropzone.js"></script>
     </div>
 </div>
 </body>
 <script>
+    $(document).ready(function(){
 
+        Dropzone.options.myAwesomeDropzone = {
+
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 10,
+
+            // Dropzone settings
+            init: function() {
+                var myDropzone = this;
+
+                this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                });
+                this.on("sendingmultiple", function() {
+
+                });
+                this.on("successmultiple", function(files, response) {
+
+                });
+                this.on("errormultiple", function(files, response) {
+
+                });
+            }
+
+        }
+
+    });
 </script>
 </html>

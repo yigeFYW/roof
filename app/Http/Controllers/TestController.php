@@ -63,7 +63,7 @@ class TestController extends Controller
         for($i=0;$i<count($arr->info());$i++){
             $arr->up_file('haha'.$i.'.jpg',public_path().'/admins/09',$i);
         }
-        dd($arr->info());
+        echo "你好";
     }
 
     public function mm(){
