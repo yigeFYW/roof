@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>上传素材</title>
     @include('comm.css')
-    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <link rel="stylesheet" href="/admin/css/plugins/dropzone/dropzone.css">
     <style>
         body{
             font-family: "微软雅黑",sans-serif;
@@ -84,7 +84,7 @@
         </div>
         @include('comm.admin_footer')
         @include('comm.admin_javascript')
-        <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+        <script src="/admin/js/plugins/dropzone/dropzone.js"></script>
     </div>
 </div>
 </body>
@@ -95,7 +95,6 @@
         Dropzone.options.myAwesomeDropzone = {
             paramName: "file", //设置传输文件名称参数. 默认是 file
             maxFilesize: 8, //上传文件的大小限制(以M为单位)
-            parallelUploads: 4,
             maxFiles: 100,
             uploadMultiple:true,//是否 Dropzone 应该在一个请求中发送多个文件.
             dictMaxFilesExceeded:"文件太大了",
@@ -117,7 +116,7 @@
                     e.preventDefault();
                     e.stopPropagation();
                     myDropzone.processQueue();
-                },false);
+                });
                 myDropzone.on("complete", function(file) {
                     //上传完成执行
                 });
