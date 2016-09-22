@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>上传素材</title>
     @include('comm.css')
-    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/plugins/webuploader/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/demo/webuploader-demo.css">
     <style>
         body{
             font-family: "微软雅黑",sans-serif;
@@ -20,12 +21,6 @@
         .pagination{
             position:relative;
             top:-30px;
-        }
-
-        #my-awesome-dropzone{
-            border-radius: 10px;
-            border:5px solid #bbb;
-            min-height: 152px;
         }
     </style>
 </head>
@@ -71,12 +66,28 @@
                             <h5>上传多媒体素材</h5>
                         </div>
                         <div class="ibox-content">
-                            <form id="my-awesome-dropzone" class="dropzone" action="{{url('test3')}}">
-                                {!! csrf_field() !!}
-                                <div class="dropzone-previews"></div>
-                                <button type="submit" class="btn btn-primary pull-right">上传!</button>
-                            </form>
-
+                            <div class="page-container">
+                                <p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮，来体验此demo.</p>
+                                <div id="uploader" class="wu-example">
+                                    <div class="queueList">
+                                        <div id="dndArea" class="placeholder">
+                                            <div id="filePicker"></div>
+                                            <p>或将照片拖到这里，单次最多可选300张</p>
+                                        </div>
+                                    </div>
+                                    <div class="statusBar" style="display:none;">
+                                        <div class="progress">
+                                            <span class="text">0%</span>
+                                            <span class="percentage"></span>
+                                        </div>
+                                        <div class="info"></div>
+                                        <div class="btns">
+                                            <div id="filePicker2"></div>
+                                            <div class="uploadBtn">开始上传</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,48 +95,18 @@
         </div>
         @include('comm.admin_footer')
         @include('comm.admin_javascript')
-        <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+                <!-- Web Uploader -->
+        <script type="text/javascript">
+            // 添加全局站点信息
+            var BASE_URL = '/admin/js/plugins/webuploader';
+        </script>
+        <script src="/admin/js/plugins/webuploader/webuploader.min.js"></script>
+
+        <script src="/admin/js/demo/webuploader-demo.js"></script>
     </div>
 </div>
 </body>
-
 <script>
 
-    $(document).ready(function(){
-        Dropzone.options.myAwesomeDropzone = {
-            paramName: "file", //设置传输文件名称参数. 默认是 file
-            maxFilesize: 8, //上传文件的大小限制(以M为单位)
-            parallelUploads: 4,
-            maxFiles: 100,
-            uploadMultiple:true,//是否 Dropzone 应该在一个请求中发送多个文件.
-            dictMaxFilesExceeded:"文件太大了",
-            dictFileTooBig:"当前文件大小@{{filesize}}M,最大只能上传@{{maxFilesize}}M的文件!",
-            dictResponseError:"错误@{{statusCode}}",
-            acceptedFiles:".jpg,.png",
-            autoProcessQueue:false,
-            accept: function(file, done) {
-
-                if (file.name == "201577221109505955.jpg") {
-                    done("您的文件名重复了");
-                }else {
-                    done();
-                }
-            },
-            init:function(){
-                var myDropzone = this;
-                this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    myDropzone.processQueue();
-                },false);
-                myDropzone.on("complete", function(file) {
-                    //上传完成执行
-                });
-            }
-        };
-    });
-    window.onload = function(){
-        $('.dz-message').html("<span style='font-size:20px;color:#999;'>将文件拖入或点击</span>");
-    }
 </script>
 </html>
