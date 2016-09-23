@@ -55,6 +55,8 @@ Route::get('test/mail/{id}','TestController@testmail');
 
 Route::Group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 
+    //后台首页
+    Route::get('index','IndexController@index');
     //文本素材路由
     Route::get('text_list','SourceController@text_list');
     Route::post('text_list','SourceController@posttext_list');

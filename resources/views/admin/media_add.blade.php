@@ -7,21 +7,6 @@
     @include('comm.css')
     <link rel="stylesheet" href="/admin/css/plugins/dropzone/dropzone.css">
     <style>
-        body{
-            font-family: "微软雅黑",sans-serif;
-        }
-        .pagination .active span{
-            background-color: #18a689;
-            color: #efefef;
-        }
-        .pagination .active span:hover{
-            background-color: #18a689;
-        }
-        .pagination{
-            position:relative;
-            top:-30px;
-        }
-
         #my-awesome-dropzone{
             border-radius: 10px;
             border:5px solid #bbb;
@@ -93,7 +78,7 @@
 
     $(document).ready(function(){
         Dropzone.options.myAwesomeDropzone = {
-            paramName: "file", //设置传输文件名称参数. 默认是 file
+            paramName: "pic", //设置传输文件名称参数. 默认是 file
             maxFilesize: 8, //上传文件的大小限制(以M为单位)
             maxFiles: 100,
             uploadMultiple:true,//是否 Dropzone 应该在一个请求中发送多个文件.
@@ -101,11 +86,11 @@
             dictFileTooBig:"当前文件大小@{{filesize}}M,最大只能上传@{{maxFilesize}}M的文件!",
             dictResponseError:"错误@{{statusCode}}",
             acceptedFiles:".jpg,.png",
-            autoProcessQueue:false,
+            autoProcessQueue: true,
             accept: function(file, done) {
-
                 if (file.name == "201577221109505955.jpg") {
                     done("您的文件名重复了");
+                    return false;
                 }else {
                     done();
                 }

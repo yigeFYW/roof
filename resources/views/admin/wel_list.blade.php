@@ -5,24 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>公众号基本功能</title>
     @include('comm.css')
-    <style>
-        body{
-            font-family: "微软雅黑",sans-serif;
-        }
-        .pagination .active span{
-            background-color: #18a689;
-            color: #efefef;
-        }
-        .pagination .active span:hover{
-            background-color: #18a689;
-        }
-        .pagination{
-            position:relative;
-            top:-30px;
-        }
-    </style>
 </head>
-
 <body>
 <div id="wrapper">
     @include('comm.menu')

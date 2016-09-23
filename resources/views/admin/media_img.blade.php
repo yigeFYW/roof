@@ -6,20 +6,6 @@
     <title>图片素材</title>
     @include('comm.css')
     <style>
-        body{
-            font-family: "微软雅黑",sans-serif;
-        }
-        .pagination .active span{
-            background-color: #18a689;
-            color: #efefef;
-        }
-        .pagination .active span:hover{
-            background-color: #18a689;
-        }
-        .pagination{
-            position:relative;
-            top:-30px;
-        }
         .modal .row p,hr{
             margin:0;
         }
@@ -106,232 +92,231 @@
                 <div class="col-lg-9 animated fadeInRight">
                     <div class="file-box">
                         <div class="file">
-                            <a href="#">
+                            <a href="#"  data-toggle="modal" data-target="#infomodal" onclick="media_info_init(this);">
                                 <span class="corner"></span>
-                                <div class="icon">
-                                    <i class="fa fa-file"></i>
+                                <div class="image">
+                                    <img alt="image" class="img-responsive" src="img/p1.jpg">
                                 </div>
-                                <div class="file-name">
-                                    Document_2014.doc
+                                <div class="file-name file_con" a="0">
+                                    Italy street.jpg <span style="color: #000;">|</span>
+                                    <a style="padding: 0;text-align: right;color: #ff9000;margin:0 0 0 5px;" href="javascript:;">编辑</a>
+                                    <a style="padding: 0;text-align: right;color: #ff9900;margin:0 0 0 5px;" href="javascript:;" onclick="is_del(this);">删除</a>
                                     <br/>
                                     <small>上传时间: 2014/03/03</small>
                                 </div>
                             </a>
                         </div>
-
                     </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#"  data-toggle="modal" data-target="#infomodal" onclick="media_info_init(this);">
-                                <span class="corner"></span>
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" src="img/p1.jpg">
-                                </div>
-                                <div class="file-name">
-                                    Italy street.jpg &nbsp;&nbsp;<span style="color: #000;">|</span>&nbsp;&nbsp;
-                                    <a style="padding: 0;text-align: right;color: #ff9000;" href="javascript:;">替换</a>
-                                    <br/>
-                                    <small>Added: Jan 6, 2014</small>
-                                </div>
-                            </a>
+                                {{--<div class="image">--}}
+                                    {{--<img alt="image" class="img-responsive" src="img/p2.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--My feel.png--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Jan 7, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="fa fa-music"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Michal Jackson.mp3--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Jan 22, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" src="img/p2.jpg">
-                                </div>
-                                <div class="file-name">
-                                    My feel.png
-                                    <br/>
-                                    <small>Added: Jan 7, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="image">--}}
+                                    {{--<img alt="image" class="img-responsive" src="img/p3.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Document_2014.doc--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Fab 11, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="icon">
-                                    <i class="fa fa-music"></i>
-                                </div>
-                                <div class="file-name">
-                                    Michal Jackson.mp3
-                                    <br/>
-                                    <small>Added: Jan 22, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="img-responsive fa fa-film"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Monica's birthday.mpg4--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Fab 18, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<a href="#">--}}
+                            {{--<div class="file">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" src="img/p3.jpg">
-                                </div>
-                                <div class="file-name">
-                                    Document_2014.doc
-                                    <br/>
-                                    <small>Added: Fab 11, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="fa fa-bar-chart-o"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Annual report 2014.xls--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Fab 22, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="icon">
-                                    <i class="img-responsive fa fa-film"></i>
-                                </div>
-                                <div class="file-name">
-                                    Monica's birthday.mpg4
-                                    <br/>
-                                    <small>Added: Fab 18, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <a href="#">
-                            <div class="file">
-                                <span class="corner"></span>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="fa fa-file"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Document_2014.doc--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Jan 11, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
 
-                                <div class="icon">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="file-name">
-                                    Annual report 2014.xls
-                                    <br/>
-                                    <small>Added: Fab 22, 2014</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="icon">
-                                    <i class="fa fa-file"></i>
-                                </div>
-                                <div class="file-name">
-                                    Document_2014.doc
-                                    <br/>
-                                    <small>Added: Jan 11, 2014</small>
-                                </div>
-                            </a>
-                        </div>
+                                {{--<div class="image">--}}
+                                    {{--<img alt="image" class="img-responsive" src="img/p1.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Italy street.jpg--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Jan 6, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
 
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" src="img/p1.jpg">
-                                </div>
-                                <div class="file-name">
-                                    Italy street.jpg
-                                    <br/>
-                                    <small>Added: Jan 6, 2014</small>
-                                </div>
-                            </a>
+                                {{--<div class="image">--}}
+                                    {{--<img alt="image" class="img-responsive" src="img/p2.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--My feel.png--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Jan 7, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="fa fa-music"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Michal Jackson.mp3--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Jan 22, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" src="img/p2.jpg">
-                                </div>
-                                <div class="file-name">
-                                    My feel.png
-                                    <br/>
-                                    <small>Added: Jan 7, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="image">--}}
+                                    {{--<img alt="image" class="img-responsive" src="img/p3.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Document_2014.doc--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Fab 11, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<div class="file">--}}
+                            {{--<a href="#">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="icon">
-                                    <i class="fa fa-music"></i>
-                                </div>
-                                <div class="file-name">
-                                    Michal Jackson.mp3
-                                    <br/>
-                                    <small>Added: Jan 22, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="img-responsive fa fa-film"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Monica's birthday.mpg4--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Fab 18, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="file-box">--}}
+                        {{--<a href="#">--}}
+                            {{--<div class="file">--}}
+                                {{--<span class="corner"></span>--}}
 
-                                <div class="image">
-                                    <img alt="image" class="img-responsive" src="img/p3.jpg">
-                                </div>
-                                <div class="file-name">
-                                    Document_2014.doc
-                                    <br/>
-                                    <small>Added: Fab 11, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <div class="file">
-                            <a href="#">
-                                <span class="corner"></span>
-
-                                <div class="icon">
-                                    <i class="img-responsive fa fa-film"></i>
-                                </div>
-                                <div class="file-name">
-                                    Monica's birthday.mpg4
-                                    <br/>
-                                    <small>Added: Fab 18, 2014</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="file-box">
-                        <a href="#">
-                            <div class="file">
-                                <span class="corner"></span>
-
-                                <div class="icon">
-                                    <i class="fa fa-bar-chart-o"></i>
-                                </div>
-                                <div class="file-name">
-                                    Annual report 2014.xls
-                                    <br/>
-                                    <small>Added: Fab 22, 2014</small>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                                {{--<div class="icon">--}}
+                                    {{--<i class="fa fa-bar-chart-o"></i>--}}
+                                {{--</div>--}}
+                                {{--<div class="file-name">--}}
+                                    {{--Annual report 2014.xls--}}
+                                    {{--<br/>--}}
+                                    {{--<small>Added: Fab 22, 2014</small>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-9">
+                    <nav>
+                        <ul class="pagination" style="margin-bottom:0;padding-bottom:0;">
+                            <li class="disabled"><a href="#">&laquo;</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">&raquo;</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -348,7 +333,7 @@
                                 <div class="icon" style="font-size: 100px;line-height: 1em;display:none;">
                                     <i class="fa fa-music"></i>
                                 </div>
-                                <img src="img/p2.jpg" alt="" style="width:100%;" class="img-rounded">
+                                <img src="img/p2.jpg" alt="" style="width:100%;" class="img-rounded" id="img_yulan">
                             </div>
                             <div class="col-lg-7">
                                 <div class="row">
@@ -359,8 +344,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <p><label>文件大小:&nbsp;</label><span id="media_img_size">30kb</span></p>
-                                        <p><label>分辨率:&nbsp;</label><span id="media_img_res">400*233</span></p>
-                                        <p><label>上传者:&nbsp;</label><span id="media_img_auth"></span>Mr.adam</p>
+                                        <p><label>分辨率:&nbsp;</label><span id="media_img_resolution">400*233</span></p>
+                                        <p><label>上传者:&nbsp;</label><span id="media_img_uploader"></span>Mr.adam</p>
                                     </div>
                                 </div>
                                 <hr>
@@ -370,7 +355,7 @@
                                             URL:
                                         </div>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="inputEmail3" value="http://wx.hhsblog.cn/public/sdf.jpg" readonly>
+                                            <input type="text" class="form-control" id="img_url" value="http://wx.hhsblog.cn/public/sdf.jpg" readonly>
                                         </div>
                                     </div>
 
@@ -382,7 +367,7 @@
                                             文件描述:
                                         </div>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="inputEmail3" placeholder="" value="这是一张图片">
+                                            <input type="text" class="form-control" id="img_desc" placeholder="" value="这是一张图片">
                                         </div>
                                     </div>
                                 </div>
@@ -393,7 +378,7 @@
                                             文件标签:
                                         </div>
                                         <div class="col-lg-10">
-                                            <ul class="tag-list" style="padding: 0">
+                                            <ul class="tag-list" style="padding: 0" id="img_tag_list">
                                                 <li><a href="">微信</a></li>
                                                 <li><a href="">图文</a></li>
                                                 <li><a href="">微商城</a></li>
@@ -412,14 +397,58 @@
     </div>
 </div>
 </body>
+
 <script>
+    var media_data = [{
+        file_name:"123.jpg",
+        file_size:"20kb",
+        file_type:"image/jpeg",
+        img_resolution:"300*200",
+        sub_time:"2016年9月2日",
+        uploader:"Mr.adam",
+        url:"http://wx.hhsblog.cn/public/sdf222.jpg",
+        desc:"这是一22张图片",
+        tag_list:[
+                {
+                tag_name:"微信",
+                tag_url:"http://wx.hhsblog.cn/public/sdf.jpg"
+            },
+            {
+                tag_name:"图文",
+                tag_url:"http://wx.hhsblog.cn/public/sdf.jpg"
+            }
+        ],
+        cat:0
+    }];
+
     $(document).ready(function(){
         $('.file-box').each(function() {
             animationHover(this, 'pulse');
         });
     });
-    function media_info_init(th){
 
+    function media_info_init(th){
+        var a = $(th).parent().parent().find('.file_con').attr('a');
+        if(media_data[a].cat == 0){
+            $('#media_img_name').html(media_data[a].file_name);
+            $('#media_img_size').html(media_data[a].file_size);
+            $('#media_img_type').html(media_data[a].file_type);
+            $('#media_img_subtime').html(media_data[a].sub_time);
+            $('#media_img_resolution').html(media_data[a].img_resolution);
+            $('#media_img_uploader').html(media_data[a].uploader);
+            $('#img_desc').val(media_data[a].desc);
+            $('#img_url').val(media_data[a].url);
+            $('#img_yulan').attr('src',media_data[a].url);
+            var list = "";
+            for(var i=0;i<media_data[a].tag_list.length;i++){
+                list+="<li><a href='"+media_data[a].tag_list[i].tag_url+"'>"+media_data[a].tag_list[i].tag_name+"</a></li>";
+            }
+            $('#img_tag_list').html(list);
+        }
+    }
+    function is_del(th){
+        var a = $(th).parent().attr('a');
+        alert(media_data[a].file_name);
     }
 </script>
 </html>

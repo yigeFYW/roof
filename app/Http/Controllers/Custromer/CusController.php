@@ -36,7 +36,9 @@ class CusController extends Controller
         }else if($status == 2){
             return redirect('welcome');
         }else if($status == 3){
-            return redirect('admin/text_list');
+            return redirect('admin/index');
+        }else if($status == 4){
+            echo "您是超级用户!";
         }
     }
 
