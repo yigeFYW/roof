@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddRepToAccounts extends Migration
+class AddRepAndRepStatusToAccounts extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,7 @@ class AddRepToAccounts extends Migration
         Schema::table('accounts', function (Blueprint $table) {
             //
             $table->char('rep',4)->default('');
+            $table->tinyInteger('rep_status')->default('0');
         });
     }
 
@@ -27,7 +28,7 @@ class AddRepToAccounts extends Migration
     {
         Schema::table('accounts', function (Blueprint $table) {
             //
-            $table->dropColumn('rep');
+            $table->dropColumn(['rep','rep_status']);
         });
     }
 }
