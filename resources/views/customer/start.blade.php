@@ -95,7 +95,7 @@
     </nav>
 </header>
 <div class="title">
-	欢迎使用<span class="redtext">小A</span>微信托管平台
+	欢迎使用<span class="redtext">A+</span>微信托管平台
 	<br>
 	@if($user->status == 0)
 		<p>系统给您的邮箱: {{$user->email}}发送了一封激活邮件,激活后方可使用本平台!</p>

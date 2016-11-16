@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>欢迎您使用小A微信托管平台</title>
+	<title>欢迎您使用A+微信托管平台</title>
 
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/flat-ui.min.css">
@@ -99,7 +99,7 @@
     </nav>
 </header>
 <div class="title">
-	欢迎使用<span class="redtext">小A</span>微信托管平台
+	欢迎使用<span class="redtext">A+</span>微信托管平台
 	<br>
 
 	<!-- Button trigger modal -->

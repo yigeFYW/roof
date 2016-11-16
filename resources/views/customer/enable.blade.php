@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>欢迎您使用A+微信托管平台</title>
-
 	<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/assets/css/flat-ui.min.css">
 	<script src="/assets/js/jquery.min.js"></script>
